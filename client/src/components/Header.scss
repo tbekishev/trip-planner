@@ -1,0 +1,93 @@
+@import "../styles/variables.scss";
+
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: $yellow;
+	padding: 1em 1em;
+	height: 2em;
+	display: flex;
+	align-items: center;
+}
+
+.drop-down {
+  color: $green;
+  font-size: 1.5em;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  color: $green;
+  font-size: 1.5em;
+  padding: 0.9em 0.7em;
+}
+
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 0;
+  width: 100%;
+  
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  background-color: $yellow; /* Black fallback color */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  left: 15%;
+  width: 100%; /* 100% width */
+  text-align: left; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 1em;
+  text-decoration: none;
+  font-size: 1.5em;
+  color:white;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+
+  &:hover, :focus {
+    color: $green;
+  }
+}
+
+.search-bar {
+  margin: 1em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &--input {
+    width: 100%;
+    height: 2em;
+    background: $yellow;
+    outline: none;
+    border: solid;
+    border-color: $green;
+    border-width: 3px;
+    border-radius: 1em;
+    padding: 0 3.5em 0 1.5em;
+    font-size: 1em;
+  }
+
+  &--button {
+      margin-right: 2em;
+      margin-left: -2em;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1.5em;
+      color: $green;
+  }
+}
+
