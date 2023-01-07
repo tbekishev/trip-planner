@@ -1,17 +1,60 @@
 import './Register.scss';
 import Header from './Header';
-import { Input } from '@chakra-ui/react'
 
 export default function Register() {
 
   return (
     <main>
       <Header />
-      <ul>
-        <li>
-          <Input placeholder='First name' className='registration'/>
-        </li>
-      </ul>
+
+      <section className='register'>
+        <h1 className='register-heading'><span>CREATE</span>
+          <div>
+            <span> an</span><span> acount</span>
+          </div>
+        </h1>
+
+        <h4 className='promotion-line'>and start planning today!</h4>
+
+        <form className='register-form'>
+          <input
+            className='input-contents'
+            name="firstName"
+            type="text"
+            placeholder="First name"
+          />
+          <input
+            className='input-contents'
+            name="lastName"
+            type="text"
+            placeholder="Last name"
+          />
+          <input
+            className='input-contents'
+            name="email"
+            type="email"
+            placeholder="Email"
+          />
+          <input
+            className='input-contents'
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
+          <input
+            className='input-contents'
+            name="passwordConfirmation"
+            type="password"
+            placeholder="Password confirmation"
+          />
+          <button type="submit" name="search-submit" className='register-button'>
+            Submit
+          </button>
+
+        </form>
+
+      </section>
+
     </main>
   );
 }
