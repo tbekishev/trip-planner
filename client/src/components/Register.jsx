@@ -1,10 +1,17 @@
 import './Register.scss';
+import Header from './Header';
+import { Input } from '@chakra-ui/react'
 
 export default function Register() {
 
   return (
-    <div className="App">
-      <h1>hello</h1>
-    </div>
+    <main>
+      <Header />
+      <ul>
+        <li>
+          <Input placeholder='First name' className='registration'/>
+        </li>
+      </ul>
+    </main>
   );
 }

@@ -1,13 +1,8 @@
 import './Header.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faX, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { 
-  IconButton,
-  Input
-} from '@chakra-ui/react'
-
-import { SearchIcon } from '@chakra-ui/icons'
+import { faBars, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Input } from '@chakra-ui/react'
 
 export default function Header() {
 
@@ -22,9 +17,12 @@ export default function Header() {
   return (
 
     <nav>
-      <div id="myNav" className="overlay">
 
-        <FontAwesomeIcon icon={faX} className="closebtn" onClick={closeNav}/>
+      <div id="myNav" className="overlay">
+        <div className='overlay-header'>
+          <h1 className='overlay-header--logo'>Triplogo</h1>
+          <FontAwesomeIcon icon={faXmark} className="closebtn" onClick={closeNav}/>
+        </div>
 
         <div className="overlay-content">
           <a href="#">Home</a>
@@ -35,8 +33,7 @@ export default function Header() {
           <a href="#">Log Out</a>
         </div>
       </div>
-
-        <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
+        <h6 className='nav-logo'>Triplogo</h6>
 
         <div className='search-bar'>
           <Input placeholder='Your destination' className='search-bar--input'/>
@@ -45,6 +42,7 @@ export default function Header() {
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </div>
+        <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
     </nav>
   );
 }
