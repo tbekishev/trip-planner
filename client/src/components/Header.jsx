@@ -39,7 +39,7 @@ export default function Header() {
         <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
 
         <div className='search-bar'>
-          <Input placeholder='Enter your destination' className='search-bar--input'/>
+          <Input placeholder='Your destination' className='search-bar--input'/>
 
           <button type="submit" name="search-submit" className='search-bar--button'>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
