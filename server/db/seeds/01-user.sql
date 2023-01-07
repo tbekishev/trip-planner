@@ -1,0 +1,15 @@
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (1, 'John', 'Doe', 'John@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (2, 'David', 'Beckham', 'David@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (3, 'Dylan', 'Thomas', 'Dylan@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (4, 'Bob', 'Dylan', 'Bob@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (5, 'Doug', 'Ford', 'Doug@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (6, 'Lucy', 'Liu', 'Lucy@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (7, 'Willow', 'Smith', 'Willow@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (8, 'Van', 'Hunt', 'Van@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (9, 'Deanne', 'Bray', 'Deanne@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (10, 'Amanda', 'Righetti', 'Amanda@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (11, 'Robby', 'Kiger', 'Robby@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (12, 'George', 'Harrison', 'George@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (13, 'Lily', 'Collins', 'Lily@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (14, 'Johnny', 'Depp', 'Johnny@gmail.com', 'password');
+INSERT INTO users (id, first_name, last_name, email, password) VALUES (15, 'Peggy', 'Lipton', 'Peggy@gmail.com', 'password');
