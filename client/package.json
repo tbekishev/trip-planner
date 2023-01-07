@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:8080",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^2.0.15",
@@ -15,7 +15,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
-    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "framer-motion": "^8.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -47,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2"
   }
 }
