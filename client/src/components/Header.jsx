@@ -1,10 +1,12 @@
 import './Header.scss';
+import { useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Input } from '@chakra-ui/react'
 
 export default function Header() {
+  const { pathname } = useLocation();
 
   const openNav = () => {
     document.getElementById("myNav").style.height = "100%";
@@ -16,7 +18,7 @@ export default function Header() {
 
   return (
 
-    <nav>
+    <nav className={pathname === '/' ? 'nav-bar' : ''}>
 
       <div id="myNav" className="overlay">
         <div className='overlay-header'>
@@ -33,16 +35,20 @@ export default function Header() {
           <a href="/">Log Out</a>
         </div>
       </div>
-        <a href='/' className='nav-logo'>Triplogo</a>
 
-        <div className='search-bar'>
-          <Input placeholder='Your destination' className='search-bar--input'/>
+      <h1 id='home-page-logo' className='overlay-header--logo' style={{display: pathname === '/' ? '' : 'none'}}>Triplogo</h1>
+      
+      
+      <a href='/' className='nav-logo' style={{display: pathname === '/' ? 'none' : ''}}>Triplogo</a>
 
-          <button type="submit" name="search-submit" className='search-bar--button'>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-        </div>
-        <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
+      <div className='search-bar' style={{width: pathname === '/' ? '90%' : ''}}>
+        <Input placeholder='Your destination' className='search-bar--input'/>
+
+        <button type="submit" name="search-submit" className='search-bar--button'>
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
+      </div>
+      <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
     </nav>
   );
 }
