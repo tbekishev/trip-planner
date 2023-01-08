@@ -1,0 +1,23 @@
+@import '../styles/mixins.scss';
+
+.planning-items {
+  @include card-border;
+  width: 100%;
+  margin-bottom: 10px;
+
+  img {
+    width: 40%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    box-shadow: 1px 1px 5px #999;
+  }
+
+  &--footer {
+    font-size: 11px;
+    padding-bottom: 1em;
+    justify-content: center;
+  }
+  
+}

@@ -38,7 +38,6 @@ export default function Header() {
 
       <h1 id='home-page-logo' className='overlay-header--logo' style={{display: pathname === '/' ? '' : 'none'}}>Triplogo</h1>
       
-      
       <a href='/' className='nav-logo' style={{display: pathname === '/' ? 'none' : ''}}>Triplogo</a>
 
       <div className='search-bar' style={{width: pathname === '/' ? '90%' : ''}}>
