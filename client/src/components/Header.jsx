@@ -25,15 +25,15 @@ export default function Header() {
         </div>
 
         <div className="overlay-content">
-          <a href="#">Home</a>
-          <a href="#">Explore</a>
-          <a href="#">Start Planning</a>
-          <a href="#">My Trips</a>
-          <a href="#">Account</a>
-          <a href="#">Log Out</a>
+          <a href="/">Home</a>
+          <a href="/">Explore</a>
+          <a href="/">Start Planning</a>
+          <a href="/">My Trips</a>
+          <a href="/">Account</a>
+          <a href="/">Log Out</a>
         </div>
       </div>
-        <h6 className='nav-logo'>Triplogo</h6>
+        <a href='/' className='nav-logo'>Triplogo</a>
 
         <div className='search-bar'>
           <Input placeholder='Your destination' className='search-bar--input'/>
