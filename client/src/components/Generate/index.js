@@ -1,4 +1,5 @@
 import Header from "../Header";
+import AttractionList from './AttractionList'
 
 export default function Generate() {
 
@@ -7,7 +8,14 @@ export default function Generate() {
       <section className='header'>
         <Header />
       </section>
+      <section className='planning-list' style={{'margin-top': '110px'}}>
 
+        <span className='planning-list--title'>Plannings for <span className='location'>Toronto</span></span>
+        <br/><br/>
+        <div className='planning-list--container'>
+          <AttractionList />
+        </div>
+      </section>
     </main>
   );
 }
