@@ -1,9 +1,22 @@
-import './AdvancedSearch.scss';
+import Header from "./Header";
+import './AdvancedSearch.scss'
+import GenerateButton from './GenerateButton';
 
-export default function AdvancedSearch() {
+export default function AdvancedSearch () {
 
   return (
-    <h1>hello</h1>
-  )
+    <main>
+      <section className='header'>
+        <Header />
+      </section>
+      <GenerateButton>Generate Trip</GenerateButton>
+      <section className='planning-list' style={{'margin-top': '110px'}}>
 
+        <span className='planning-list--title'>Advanced Preferences</span>
+        <br/><br/>
+
+
+      </section>
+    </main>
+  );
 }

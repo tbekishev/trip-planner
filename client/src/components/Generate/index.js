@@ -1,5 +1,6 @@
 import Header from "../Header";
 import AttractionList from './AttractionList'
+import GenerateButton from '../GenerateButton';
 
 export default function Generate() {
 
@@ -8,6 +9,8 @@ export default function Generate() {
       <section className='header'>
         <Header />
       </section>
+      <GenerateButton>Next step</GenerateButton>
+
       <section className='planning-list' style={{'margin-top': '110px'}}>
 
         <span className='planning-list--title'>Plannings for <span className='location'>Toronto</span></span>
