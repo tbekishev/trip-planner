@@ -9,6 +9,7 @@ import './index.scss';
 import App from './components/App';
 import Register from './components/Register';
 import Plannings from './components/Plannings';
+import Generate from './components/Generate';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "plannings",
     element: <Plannings />,
+  },
+  {
+    path: "generate",
+    element: <Generate />,
   }
 ]);
 
