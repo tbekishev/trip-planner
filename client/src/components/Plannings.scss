@@ -1,0 +1,7 @@
+@import "../styles/variables.scss";
+@import '../styles/mixins.scss';
+
+.location {
+  font-family: $logo-font;
+  color: $red;
+}

@@ -1,12 +1,8 @@
 @import "../styles/variables.scss";
-@import '../styles/mixins.scss';
 
 .planning-list {
-
   margin-top: 200px;
   text-align: center;
-  margin-left: 5px;
-  margin-right: 5px;
 
   &--title {
     font-family: $main-font;

@@ -8,6 +8,8 @@ import './index.scss';
 
 import App from './components/App';
 import Register from './components/Register';
+import Plannings from './components/Plannings';
+
 import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -19,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <Register />,
+  },
+  {
+    path: "plannings",
+    element: <Plannings />,
   }
 ]);
 
