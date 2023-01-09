@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const { Pool } = require('pg');
+require("dotenv").config();
 
 const pool = new Pool({
-  user: 'labber',
-  password: 'labber',
-  host: 'localhost',
-  database: 'travel'
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME
 })
 
 /* GET users listing. */
@@ -21,6 +22,7 @@ router.post('/', (req, res) => {
     RETURNING *;`, [firstName, lastName, email, password]
   )
   .then((result) => {
+    res.send(result ? "success" : null)
     return result.rows[0];
   })
   .catch((err) => {
