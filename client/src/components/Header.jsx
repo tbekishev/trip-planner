@@ -31,7 +31,7 @@ export default function Header() {
           <a href="/">Explore</a>
           <a href="/">Start Planning</a>
           <a href="/">My Trips</a>
-          <a href="/">Account</a>
+          <a href="register">Account</a>
           <a href="/">Log Out</a>
         </div>
       </div>
