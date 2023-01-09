@@ -10,6 +10,7 @@ import App from './components/App';
 import Register from './components/Register';
 import Plannings from './components/Plannings';
 import Generate from './components/Generate';
+import AdvancedSearch from './components/AdvancedSearch'
 
 import reportWebVitals from './reportWebVitals';
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "generate",
     element: <Generate />,
+  },
+  {
+    path: "advanced",
+    element: <AdvancedSearch />,
   }
 ]);
 
