@@ -7,6 +7,6 @@ CREATE TABLE plans (
   start_date DATE,
   end_date DATE,
   create_date DATE,
-  user_id INTEGER REFRENCES users(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   location_id INTEGER
 );

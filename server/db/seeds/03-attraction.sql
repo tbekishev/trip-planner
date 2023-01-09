@@ -1,25 +1,25 @@
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (1, 'Eiffel Tower', 'Paris', 4, 60)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (2, 'Louvre', 'Paris', 4.5, 90)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (3, 'Disneyland', 'Paris', 4, 80)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (4, 'Singapore Zoo', 'Singapore', 4.8, 50)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (5, 'Night Time Sightseeing with River Cruise', 'Singapore', 4.3, 250)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (6, 'Singapore Bus Tour', 'Singapore', 4.2, 60)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (7, 'Colosseum', 'Rome', 4.7, 80)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (8, 'Vatican Muesume', 'Rome', 4.5, 70)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (9, 'Leonardo da Vinci Exhibition', 'Rome', 4.3, 13)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (10, 'Murano & Burano', 'Venice', 4.4, 50)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (11, 'Saint Marks Basilica', 'Venice', 4.7, 36)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (12, 'Morning Walking Tour of Venice', 'Venice', 4.1, 10)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (13, 'Hagia Sophia', 'Istanbul', 4.8, 25)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (14, 'Bosphorus Dinner & Show Cruise', 'Istanbul', 4.1, 70)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (15, 'Topkapi Palace Museum', 'Istanbul', 4.7, 15)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (16, 'Camlica Hill', 'Istanbul', 4.8, 20)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (17, 'Great Wall of China', 'Beijing', 4.8, 34)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (18, 'Beijing Hutong Food Walking tour', 'Beijing', 4.9, 200)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (19, 'Summer Palace', 'Beijing', 4.6, 10)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (20, 'Tower Bridge', 'London', 4.7, 10)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (21, 'Hyde Park', 'London', 4.7, 5)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (22, 'Backingham Palace', 'London', 4.5, 40)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (23, 'Wonderland', 'Toronto', 4.4, 90)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (23, 'City Center Walking Tour', 'Toronto', 4.7, 70)
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (23, 'Toronto Helicopter Adventure', 'Toronto', 5.0, 266)
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (1, 'Eiffel Tower', 'Paris', 4, 60);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (2, 'Louvre', 'Paris', 4.5, 90);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (3, 'Disneyland', 'Paris', 4, 80);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (4, 'Singapore Zoo', 'Singapore', 4.8, 50);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (5, 'Night Time Sightseeing with River Cruise', 'Singapore', 4.3, 250);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (6, 'Singapore Bus Tour', 'Singapore', 4.2, 60);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (7, 'Colosseum', 'Rome', 4.7, 80);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (8, 'Vatican Muesume', 'Rome', 4.5, 70);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (9, 'Leonardo da Vinci Exhibition', 'Rome', 4.3, 13);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (10, 'Murano & Burano', 'Venice', 4.4, 50);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (11, 'Saint Marks Basilica', 'Venice', 4.7, 36);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (12, 'Morning Walking Tour of Venice', 'Venice', 4.1, 10);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (13, 'Hagia Sophia', 'Istanbul', 4.8, 25);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (14, 'Bosphorus Dinner & Show Cruise', 'Istanbul', 4.1, 70);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (15, 'Topkapi Palace Museum', 'Istanbul', 4.7, 15);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (16, 'Camlica Hill', 'Istanbul', 4.8, 20);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (17, 'Great Wall of China', 'Beijing', 4.8, 34);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (18, 'Beijing Hutong Food Walking tour', 'Beijing', 4.9, 200);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (19, 'Summer Palace', 'Beijing', 4.6, 10);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (20, 'Tower Bridge', 'London', 4.7, 10);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (21, 'Hyde Park', 'London', 4.7, 5);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (22, 'Backingham Palace', 'London', 4.5, 40);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (23, 'Wonderland', 'Toronto', 4.4, 90);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (23, 'City Center Walking Tour', 'Toronto', 4.7, 70);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (23, 'Toronto Helicopter Adventure', 'Toronto', 5.0, 266);
