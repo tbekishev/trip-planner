@@ -1,9 +1,11 @@
 @import '../styles/mixins.scss';
+@import '../styles/variables.scss';
 
-.planning-items {
+.planning-item {
   @include card-border;
   width: 100%;
   margin-bottom: 10px;
+  font-family: $main-font;
 
   img {
     width: 40%;
@@ -18,6 +20,12 @@
     font-size: 11px;
     padding-bottom: 1em;
     justify-content: center;
+  }
+
+  &--discription {
+    text-align: left;
+    padding-left: 1em;
+    padding-right: 0.5em;
   }
   
 }
