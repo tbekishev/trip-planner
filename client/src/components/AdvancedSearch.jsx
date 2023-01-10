@@ -15,7 +15,6 @@ export default function AdvancedSearch () {
         <span className='planning-list--title'>Advanced Preferences</span>
         <br/><br/>
 
-
       </section>
     </main>
   );
