@@ -13,6 +13,7 @@ import Generate from './components/Generate';
 import AdvancedSearch from './components/AdvancedSearch'
 
 import reportWebVitals from './reportWebVitals';
+import Login from './components/Login';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <Register />,
+  },
+  {
+    path: "login",
+    element: <Login />,
   },
   {
     path: "plannings",

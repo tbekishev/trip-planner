@@ -12,25 +12,43 @@ export default function Register() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordConfirmation, setPasswordConfirmation] = useState();
+  const [error, setError] = useState(false);
+  const [alert, setAlert] = useState(false);
+  const [confirmation, setConfirmation] = useState(false);
   const navigate = useNavigate();
 
-  const handleFirstNameChange = (event) => setFirstName(event.target.value);
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
+    setError(false);
+  }
 
-  const handleLastNameChange = (event) => setLastName(event.target.value);
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
+    setError(false);
+  }
 
-  const handleEmailChange = (event) => setEmail(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    setError(false);
+  }
 
-  const handlePasswordChange = (event) => setPassword(event.target.value);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    setError(false);
+  }
 
-  const handlePasswordConfirmationChange = (event) => setPasswordConfirmation(event.target.value);
+  const handlePasswordConfirmationChange = (event) => {
+    setPasswordConfirmation(event.target.value);
+    setError(false);
+  }
   
   const handleSubmit = (event) => {
   event.preventDefault();
   if (password !== passwordConfirmation) {
-    alert('The password and password confirmation do not match.');
+    setConfirmation(true)
   } else
   if (!firstName || !lastName || !email || !password || !passwordConfirmation){
-    alert('All fields are required to be filled');
+    setError(true);
   } else {
     axios
       .post("/users", {
@@ -41,9 +59,11 @@ export default function Register() {
       })
       .then((result) => {
         const user = result.data;
+        console.log(user);
         localStorage.setItem("user", JSON.stringify(user));
         navigate('/');
       })
+      .catch((err) => setAlert(true));
   }
 };
 
@@ -59,7 +79,9 @@ export default function Register() {
         </h1>
 
         <h4 className='promotion-line'>and start planning today!</h4>
-
+        <span>{alert ? `Sorry, Try again!` : null}</span>
+        <span>{error ? `Fill up the Form please!` : null}</span>
+        <span>{confirmation ? 'The password and password confirmation do not match.' : null}</span>
         <form className='register-form' onSubmit={handleSubmit}>
           <input
             className='input-contents'
