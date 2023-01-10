@@ -1,4 +1,7 @@
 import './PlanningListItem.scss';
+import { useEffect, useState } from "react";
+import axios from 'axios';
+
 import {
   Card,
   CardBody,
@@ -8,8 +11,20 @@ import {
   Text,
 } from '@chakra-ui/react'
 
-export default function PlanningListItem() {
+export default function PlanningListItem(props) {
 
+  const [state, setState] = useState('');
+  const locationName = props.name.replace(/\s+/g, '-').toLowerCase();
+  const imageUrl = `https://api.unsplash.com/search/photos?page=1&query=${locationName}&client_id=${process.env.REACT_APP_UNSPLASHKEY}&per_page=10&orientation=landscape`;
+  const random = Math.floor(Math.random() * 9 + 1);
+  // const image_url = image[random].urls.regular;
+  useEffect(() => {
+    axios
+    .get(imageUrl)
+    .then((response) =>{
+      setState(response.data.results[random].urls.regular);
+    })
+  }, []);
   return (      
     <Card
       direction={{ base: 'column', sm: 'row' }}
@@ -18,13 +33,13 @@ export default function PlanningListItem() {
       className='planning-item'
     >
       <img
-        src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
+        src={state}
         alt='Caffe Latte'
       />
 
       <Stack>
         <CardBody>
-          <Heading size='md'>Graduation Trip</Heading>
+          <Heading size='md'>{props.name}</Heading>
 
           <Text className='planning-item--discription' py='2'>
             Caffè latte is a coffee beverage of Italian origin made with espresso
@@ -33,7 +48,7 @@ export default function PlanningListItem() {
         </CardBody>
         
         <CardFooter className='planning-item--footer'>
-          4 days | $2000 | Group of 4 | @Toronto, Canada
+          4 days | ${props.budget} | Group of 4 | {props.city}
         </CardFooter>
       </Stack>
     </Card>

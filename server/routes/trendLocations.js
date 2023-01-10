@@ -1,13 +1,12 @@
 const router = require("express").Router();
 
 module.exports = db => {
-  router.get("/trend/city", (request, response) => {
+  router.get("/trend/location", (request, response) => {
     db.query(
       `
-      SELECT name, COUNT(*) as count
-      FROM plans
-      GROUP BY name
-      ORDER BY COUNT
+      SELECT *
+      FROM attractions
+      ORDER BY rate desc
       LIMIT 5;
     `
     ).then((data) => {
