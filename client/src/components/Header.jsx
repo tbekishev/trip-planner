@@ -1,9 +1,8 @@
 import './Header.scss';
 import { useLocation } from 'react-router-dom';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { Input } from '@chakra-ui/react'
+import { Input, useRangeSlider } from '@chakra-ui/react';
 
 export default function Header() {
   const { pathname } = useLocation();
@@ -15,7 +14,9 @@ export default function Header() {
   const closeNav = () => {
     document.getElementById("myNav").style.height = "0%";
   }
-
+  const logout = () => localStorage.clear();
+  const obj = JSON.parse(localStorage.getItem("user"));
+  const name = obj.first_name;
   return (
 
     <nav className={pathname === '/' ? 'nav-bar' : ''}>
@@ -32,7 +33,7 @@ export default function Header() {
           <a href="/">Start Planning</a>
           <a href="/">My Trips</a>
           <a href="register">Account</a>
-          <a href="/">Log Out</a>
+          <a href="/" onClick={logout}>Log Out</a>
         </div>
       </div>
 
@@ -41,11 +42,15 @@ export default function Header() {
       <a href='/' className='nav-logo' style={{display: pathname === '/' ? 'none' : ''}}>Triplogo</a>
 
       <div className='search-bar' style={{width: pathname === '/' ? '90%' : ''}}>
-        <Input placeholder='Your destination' className='search-bar--input'/>
+        <Input 
+          placeholder='Your destination' 
+          className='search-bar--input'
+        />
 
         <button type="submit" name="search-submit" className='search-bar--button'>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
+        <span>{localStorage.getItem("user") ? `Hello ${name}` : null}</span>
       </div>
       <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
     </nav>

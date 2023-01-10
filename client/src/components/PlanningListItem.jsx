@@ -17,7 +17,6 @@ export default function PlanningListItem(props) {
   const locationName = props.name.replace(/\s+/g, '-').toLowerCase();
   const imageUrl = `https://api.unsplash.com/search/photos?page=1&query=${locationName}&client_id=${process.env.REACT_APP_UNSPLASHKEY}&per_page=10&orientation=landscape`;
   const random = Math.floor(Math.random() * 9 + 1);
-  // const image_url = image[random].urls.regular;
   useEffect(() => {
     axios
     .get(imageUrl)

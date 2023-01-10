@@ -8,6 +8,8 @@ const usersRouter = require('./routes/users');
 const db = require("./db");
 const trendCities = require('./routes/trendCities');
 const trendLocations = require('./routes/trendLocations');
+const loginRouter = require("./routes/login");
+const userRegistration = require('./helpers/userRegistration')(db);
 
 const app = express();
 
@@ -19,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use("/api", trendCities(db));
 app.use("/api", trendLocations(db));
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', usersRouter(userRegistration));
+app.use('/userslogin', loginRouter(db))
 
 module.exports = app;
