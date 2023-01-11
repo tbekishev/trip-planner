@@ -3,9 +3,13 @@ import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Input, useRangeSlider } from '@chakra-ui/react';
+import Autocomplete from "react-google-autocomplete";
 
 export default function Header() {
+
   const { pathname } = useLocation();
+  const logout = () => localStorage.clear();
+  const obj = JSON.parse(localStorage.getItem("user"));
 
   const openNav = () => {
     document.getElementById("myNav").style.height = "100%";
@@ -14,9 +18,7 @@ export default function Header() {
   const closeNav = () => {
     document.getElementById("myNav").style.height = "0%";
   }
-  const logout = () => localStorage.clear();
-  const obj = JSON.parse(localStorage.getItem("user"));
-  const name = obj.first_name;
+
   return (
 
     <nav className={pathname === '/' ? 'nav-bar' : ''}>
@@ -40,17 +42,17 @@ export default function Header() {
       <h1 id='home-page-logo' className='overlay-header--logo' style={{display: pathname === '/' ? '' : 'none'}}>Triplogo</h1>
       
       <a href='/' className='nav-logo' style={{display: pathname === '/' ? 'none' : ''}}>Triplogo</a>
-
       <div className='search-bar' style={{width: pathname === '/' ? '90%' : ''}}>
-        <Input 
-          placeholder='Your destination' 
-          className='search-bar--input'
-        />
-
+           <Autocomplete className='search-bar--input'
+            apiKey={process.env.REACT_APP_GOOGLEKEY}
+            onPlaceSelected={(place) => {
+              console.log(place);
+            }}
+          />
         <button type="submit" name="search-submit" className='search-bar--button'>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
-        <span>{localStorage.getItem("user") ? `Hello ${name}` : null}</span>
+        <span>{localStorage.getItem("user") ? `Hello ${obj.first_name}` : null}</span>
       </div>
       <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
     </nav>
