@@ -11,9 +11,9 @@ import Register from './components/Register';
 import Plannings from './components/Plannings';
 import Generate from './components/Generate';
 import AdvancedSearch from './components/AdvancedSearch'
-
 import reportWebVitals from './reportWebVitals';
 import Login from './components/Login';
+import UserProfile from './components/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "advanced",
     element: <AdvancedSearch />,
+  },
+  {
+    path: "profile",
+    element: <UserProfile/>,
   }
 ]);
 

@@ -16,7 +16,9 @@ export default function Header() {
   }
   const logout = () => localStorage.clear();
   const obj = JSON.parse(localStorage.getItem("user"));
-  const name = obj.first_name;
+  let name = '';
+  console.log(obj);
+  if (obj) {name = obj.first_name;}
   return (
 
     <nav className={pathname === '/' ? 'nav-bar' : ''}>
@@ -31,7 +33,7 @@ export default function Header() {
           <a href="/">Home</a>
           <a href="/">Explore</a>
           <a href="/">Start Planning</a>
-          <a href="/">My Trips</a>
+          <a href="profile">My Trips</a>
           <a href="register">Account</a>
           <a href="/" onClick={logout}>Log Out</a>
         </div>
