@@ -2,7 +2,6 @@ import './Header.scss';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { Input, useRangeSlider } from '@chakra-ui/react';
 import Autocomplete from "react-google-autocomplete";
 
 export default function Header() {
