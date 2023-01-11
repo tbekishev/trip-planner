@@ -2,6 +2,7 @@ import './Header.scss';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Avatar } from '@chakra-ui/react'
 import Autocomplete from "react-google-autocomplete";
 
 export default function Header() {
@@ -51,6 +52,7 @@ export default function Header() {
         <button type="submit" name="search-submit" className='search-bar--button'>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
+        <Avatar name={localStorage.getItem("user") ? `${obj.first_name} ${obj.last_name}` : null} src='https://bit.ly/tioluwani-kolawole'/>
         <span>{localStorage.getItem("user") ? `Hello ${obj.first_name}` : null}</span>
       </div>
       <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
