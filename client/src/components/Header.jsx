@@ -13,10 +13,10 @@ export default function Header() {
 
   const closeNav = () => {
     document.getElementById("myNav").style.height = "0%";
-  }
+  } 
   const logout = () => localStorage.clear();
   const obj = JSON.parse(localStorage.getItem("user"));
-  const name = obj.first_name;
+
   return (
 
     <nav className={pathname === '/' ? 'nav-bar' : ''}>
@@ -50,7 +50,7 @@ export default function Header() {
         <button type="submit" name="search-submit" className='search-bar--button'>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
-        <span>{localStorage.getItem("user") ? `Hello ${name}` : null}</span>
+        <span>{localStorage.getItem("user") ? `Hello ${obj.first_name}` : null}</span>
       </div>
       <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
     </nav>
