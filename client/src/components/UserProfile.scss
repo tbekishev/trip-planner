@@ -1,0 +1,14 @@
+@import "../styles/variables.scss";
+@import '../styles/mixins.scss';
+
+.user_profile_title {
+  font-family: $logo-font;
+  color: $red;
+  font-size: 5 rem;
+}
+
+.user_profile {
+  font-family: $logo-font;
+  color: $red;
+  font-size: 3 rem;
+}

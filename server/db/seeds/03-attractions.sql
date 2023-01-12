@@ -21,5 +21,5 @@ INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (20, 'Towe
 INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (21, 'Hyde Park', 'London', 4.7, 5);
 INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (22, 'Backingham Palace', 'London', 4.5, 40);
 INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (23, 'Wonderland', 'Toronto', 4.4, 90);
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (23, 'City Center Walking Tour', 'Toronto', 4.7, 70);
-INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (23, 'Toronto Helicopter Adventure', 'Toronto', 5.0, 266);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (24, 'City Center Walking Tour', 'Toronto', 4.7, 70);
+INSERT INTO attractions (id, name, city, rate, average_budget) VALUES (25, 'Toronto Helicopter Adventure', 'Toronto', 5.0, 266);

@@ -32,7 +32,7 @@ export default function Header() {
           <a href="/">Home</a>
           <a href="/">Explore</a>
           <a href="/">Start Planning</a>
-          <a href="/">My Trips</a>
+          <a href="profile">My Trips</a>
           <a href="register">Account</a>
           <a href="/" onClick={logout}>Log Out</a>
         </div>
