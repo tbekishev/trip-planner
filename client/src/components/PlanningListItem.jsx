@@ -24,7 +24,8 @@ export default function PlanningListItem(props) {
       setState(response.data.results[random].urls.regular);
     })
   }, []);
-  return (      
+  return (  
+
     <Card
       direction={{ base: 'column', sm: 'row' }}
       overflow='hidden'
@@ -40,7 +41,7 @@ export default function PlanningListItem(props) {
         <CardBody>
           <Heading size='md'>{props.name}</Heading>
 
-          <Text className='planning-item--discription' py='2'>
+          <Text className='planning-item--description' py='2'>
             Caffè latte is a coffee beverage of Italian origin made with espresso
             and steamed milk.
           </Text>

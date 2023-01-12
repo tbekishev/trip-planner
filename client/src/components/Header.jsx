@@ -2,6 +2,7 @@ import './Header.scss';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Avatar } from '@chakra-ui/react'
 import Autocomplete from "react-google-autocomplete";
 
 export default function Header() {
@@ -41,19 +42,39 @@ export default function Header() {
       <h1 id='home-page-logo' className='overlay-header--logo' style={{display: pathname === '/' ? '' : 'none'}}>Triplogo</h1>
       
       <a href='/' className='nav-logo' style={{display: pathname === '/' ? 'none' : ''}}>Triplogo</a>
-      <div className='search-bar' style={{width: pathname === '/' ? '90%' : ''}}>
-           <Autocomplete className='search-bar--input'
+
+      <div className='search-bar' style={{'margin-left': pathname === '/' ? '3em' : ''}}>
+
+        <div className='search-bar--style'>
+
+          <Autocomplete 
+            className='search-bar--input'
             apiKey={process.env.REACT_APP_GOOGLEKEY}
             onPlaceSelected={(place) => {
               console.log(place);
             }}
           />
-        <button type="submit" name="search-submit" className='search-bar--button'>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button>
-        <span>{localStorage.getItem("user") ? `Hello ${obj.first_name}` : null}</span>
+
+          <button type="submit" name="search-submit" className='search-bar--input--button'>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+        </div>
+
+        <Avatar 
+          className='user-avatar'
+          name={localStorage.getItem("user") ? `${obj.first_name} ${obj.last_name}` : null} 
+          src='https://bit.ly/tioluwani-kolawole'
+          style={{'background-color': pathname === '/' ? '' : '#7EA78B', 'position': 'inherit'}}
+        />
+
+        <FontAwesomeIcon 
+          icon={faBars} 
+          className="drop-down" 
+          onClick={openNav}        
+        />
       </div>
-      <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
+
+
     </nav>
   );
 }
