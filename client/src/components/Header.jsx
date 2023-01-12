@@ -43,7 +43,7 @@ export default function Header() {
       
       <a href='/' className='nav-logo' style={{display: pathname === '/' ? 'none' : ''}}>Triplogo</a>
 
-      <div className='search-bar' style={{'margin-left': pathname === '/' ? '3em' : ''}}>
+      <div className='search-bar' style={{'marginLeft': pathname === '/' ? '3em' : ''}}>
 
         <div className='search-bar--style'>
 
@@ -64,7 +64,7 @@ export default function Header() {
           className='user-avatar'
           name={localStorage.getItem("user") ? `${obj.first_name} ${obj.last_name}` : null} 
           src='https://bit.ly/tioluwani-kolawole'
-          style={{'background-color': pathname === '/' ? '' : '#7EA78B', 'position': 'inherit'}}
+          style={{'backgroundColor': pathname === '/' ? '' : '#7EA78B', 'position': 'inherit'}}
         />
 
         <FontAwesomeIcon 
