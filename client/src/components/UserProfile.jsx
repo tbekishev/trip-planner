@@ -5,18 +5,19 @@ import Header from './Header';
 import { useEffect, useState } from "react";
 import PlanningListItem from './PlanningListItem';
 import axios  from 'axios';
-import { Navigate } from 'react-router-dom';
+import { redirect } from "react-router-dom";
 
 
 export default function UserProfile() {
-  
-  
-  const [state, setState] = useState([]);  
  
+  const [state, setState] = useState([]);  
+  const obj = JSON.parse(localStorage.getItem("user"));
+
+
   useEffect(() => {
-    const userPlans = "http://localhost:8080/profile/4";
+       const userProfile = `http://localhost:8080/profile/${obj.id}`;
     axios
-    .get(userPlans)
+    .get(userProfile)
     .then((response) => {
       setState(response.data.data)
 
@@ -24,7 +25,7 @@ export default function UserProfile() {
     })
     .catch((err) => err);
   }, []);
-  // const userName = state.first_name;
+  
 
   const UserPlanningList = state.map((plan) =>
     <PlanningListItem
@@ -41,7 +42,7 @@ return (
     <section className='header'>
       <Header />
     </section>
-    <section className='user_profile_title' style={{ 'marginTop': '110px' }}><h2> My PROFILE</h2>
+    <section className='user_profile_title' style={{ 'marginTop': '110px' }}><h2> {obj.first_name}'s PROFILE</h2>
 
       <span className='user_profile'>My Plans</span>
       <br /><br />

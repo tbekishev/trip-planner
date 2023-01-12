@@ -15,6 +15,8 @@ import reportWebVitals from './reportWebVitals';
 import Login from './components/Login';
 import UserProfile from './components/UserProfile';
 
+const obj = JSON.parse(localStorage.getItem("user"));
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
   },
   {
     path: "profile",
-    element: <UserProfile/>,
+    element: obj? <UserProfile /> : <Login />, 
   }
 ]);
 
