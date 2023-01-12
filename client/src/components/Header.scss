@@ -60,7 +60,7 @@ nav {
       margin-top: 0;
       font-size: 5em;
       color: $red;
-      margin-left: 1em;
+      margin-left: 10vw;
     }
   }
 }
@@ -165,10 +165,7 @@ nav {
 .nav-bar {
   flex-wrap: wrap;
   padding-top: 70px;
-  background-color: $green;
+  background-color: $yellow;
   background-image: url("https://www.transparenttextures.com/patterns/tree-bark.png");
   align-items: center;
-}
-
-.search-result {
 }

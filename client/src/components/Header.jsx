@@ -64,10 +64,14 @@ export default function Header() {
           className='user-avatar'
           name={localStorage.getItem("user") ? `${obj.first_name} ${obj.last_name}` : null} 
           src='https://bit.ly/tioluwani-kolawole'
-          style={{'background-color': pathname === '/' ? '' : '#7EA78B'}}
+          style={{'background-color': pathname === '/' ? '' : '#7EA78B', 'position': 'inherit'}}
         />
 
-        <FontAwesomeIcon icon={faBars} className="drop-down" onClick={openNav}/>
+        <FontAwesomeIcon 
+          icon={faBars} 
+          className="drop-down" 
+          onClick={openNav}        
+        />
       </div>
 
 
