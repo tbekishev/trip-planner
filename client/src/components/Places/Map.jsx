@@ -1,9 +1,11 @@
 import GoogleMapReact from 'google-map-react';
+import { useState } from 'react';
 import mapStyles from './mapStyles';
+
 
 export default function Map(props) {
   const changeHandler = (event) => {
-    props.setCoordinates({lat: event.center.lat, lng: event.center.lng});
+    props.setCoords({lat: event.center.lat, lng: event.center.lng});
     props.setBounds({ne: event.marginBounds.ne, sw: event.marginBounds.sw});
   }
   return (
@@ -11,13 +13,12 @@ export default function Map(props) {
       <div style={{height: '85vh', width: '100%'}}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
-          defaultCenter={props.coordinates}
-          center={props.coordinates}
+          defaultCenter={props.coords}
+          center={props.coords}
           defaultZoom={14}
           margin={[50, 50, 50, 50]}
-          options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}          
+          options={{ disableDefaultUI: true, zoomControl: true }}          
           onChange={changeHandler}
-          // onChildClick={() => {}}
           >
             {props.places?.map((place, index) => (
               <div
