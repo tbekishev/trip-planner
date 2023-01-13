@@ -24,10 +24,10 @@ export default function Login() {
   }
   
   const handleSubmit = (event) => {
-  event.preventDefault();
-  if (!email || !password){
-    setError(true);
-  } else {
+    event.preventDefault();
+    if (!email || !password){
+      setError(true);
+    } else {
     axios
       .post("/userslogin", {
         email,
@@ -42,16 +42,16 @@ export default function Login() {
         navigate('/');
         }
       })
-  }
-};
-useEffect(() => {
-  let userData = localStorage.getItem("user");
-  userData = JSON.parse(userData);
-  console.log(userData)
-  if (userData) {
-    navigate("/");
-  }
-});
+    }
+  };
+  useEffect(() => {
+    let userData = localStorage.getItem("user");
+    userData = JSON.parse(userData);
+    console.log(userData)
+    if (userData) {
+      navigate("/");
+    }
+  });
 
   return (
     <main>

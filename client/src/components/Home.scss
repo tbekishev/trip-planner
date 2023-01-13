@@ -1,0 +1,17 @@
+@import "../styles/variables.scss";
+
+.planning-list {
+  margin-top: 400px;
+  text-align: center;
+
+  &--title {
+    font-family: $main-font;
+    color: $green;
+    font-size: 2em;
+  }
+
+  &--container {
+    padding: 10px;
+    margin-top: 1em;
+  }
+}

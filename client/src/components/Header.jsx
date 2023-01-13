@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Autocomplete from "react-google-autocomplete";
+import { useState } from 'react';
 
-export default function Header() {
+export default function Header(props) {
 
   const { pathname } = useLocation();
   const logout = () => localStorage.clear();
@@ -16,6 +17,16 @@ export default function Header() {
 
   const closeNav = () => {
     document.getElementById("myNav").style.height = "0%";
+  }
+
+  
+  const [autocomplete, setAutocomplete] = useState(null);
+  const onLoad = (autocomp) => setAutocomplete(autocomp);
+  const onPlaceChanged = () => {
+    const lat = autocomplete.getPlace().geometry.location.lat();
+    const lng = autocomplete.getPlace().geometry.location.lng();
+    props.setCoordinates({lat, lng});
+    console.log("SEARCH: ", lat, lng)
   }
 
   return (
@@ -42,12 +53,15 @@ export default function Header() {
       
       <a href='/' className='nav-logo' style={{display: pathname === '/' ? 'none' : ''}}>Triplogo</a>
       <div className='search-bar' style={{width: pathname === '/' ? '90%' : ''}}>
-           <Autocomplete className='search-bar--input'
+           <Autocomplete 
+            className='search-bar--input'
             apiKey={process.env.REACT_APP_GOOGLEKEY}
             onPlaceSelected={(place) => {
               console.log(place);
             }}
-          />
+            onLoad={onLoad} 
+            onPlaceChanged={onPlaceChanged}
+            />
         <button type="submit" name="search-submit" className='search-bar--button'>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
