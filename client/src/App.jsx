@@ -8,6 +8,7 @@ import Generate from './components/Generate';
 import AdvancedSearch from './components/AdvancedSearch';
 import UserProfile from './components/UserProfile';
 import Places from "./components/Places/Places";
+import TrendAttractions from './components/TrendAttractions';
 
 const obj = JSON.parse(localStorage.getItem("user"));
 
@@ -22,6 +23,7 @@ export default function App() {
           <Route path='/advanced' element={<AdvancedSearch/>}/> 
           <Route path='/profile' element={obj ? <UserProfile /> : <Login />}/>
           <Route path='/places' element={<Places/>}/>
+          <Route path='/trend-attrctions' element={<TrendAttractions/>}/>
       </Routes>
   );
 }

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import PlanningListItem from './PlanningListItem';
 import axios  from 'axios';
 import { redirect } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export default function UserProfile() {
@@ -20,8 +21,6 @@ export default function UserProfile() {
     .get(userProfile)
     .then((response) => {
       setState(response.data.data)
-
-      console.log (response.data , "data")
     })
     .catch((err) => err);
   }, []);
@@ -42,14 +41,18 @@ return (
     <section className='header'>
       <Header />
     </section>
-    <section className='user_profile_title' style={{ 'marginTop': '110px' }}><h2> {obj.first_name}'s PROFILE</h2>
-
-      <span className='user_profile'>My Plans</span>
+    <section className='user_profile_title' style={{ 'marginTop': '100px' }}><h2> {obj.first_name}'s Profile</h2>
+    </section >
+    <section className='user_profile_container'>
+    <button  className='user_profile_button'> <a href="/places">Start Your New Journey :)</a></button>
+    <button  className='user_profile_button'> <a href="/trend-attrctions">Explor Trends locations</a></button>
+    </section>
+    <section className='user_profile' style={{ 'marginTop': '10px'}}>My Previous Plans</section>
       <br /><br />
       <div className='planning-list--container'>
         {UserPlanningList}
       </div>
-    </section>
+    
   </main>
 );
 }

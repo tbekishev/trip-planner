@@ -34,7 +34,7 @@ export default function Header(props) {
           <a href="/">Home</a>
           <a href="/">Explore</a>
           <a href="/">Start Planning</a>
-          <a href="profile">My Trips</a>
+          <a href="profile">My Page</a>
           <a href="register">Account</a>
           <a href="/" onClick={logout}>Log Out</a>
         </div>
