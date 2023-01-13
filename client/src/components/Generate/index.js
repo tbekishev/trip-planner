@@ -11,7 +11,7 @@ export default function Generate() {
       </section>
       <GenerateButton>Next step</GenerateButton>
 
-      <section className='planning-list' style={{'margin-top': '110px'}}>
+      <section className='planning-list' style={{'marginTop': '110px'}}>
 
         <span className='planning-list--title'>Plannings for <span className='location'>Toronto</span></span>
         <br/><br/>

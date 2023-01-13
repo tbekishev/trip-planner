@@ -10,7 +10,7 @@ export default function Plannings() {
       <section className='header'>
         <Header />
       </section>
-      <section className='planning-list' style={{'margin-top': '110px'}}>
+      <section className='planning-list' style={{'marginTop': '110px'}}>
 
         <span className='planning-list--title'>Plannings for <span className='location'>Toronto</span></span>
         <br/><br/>

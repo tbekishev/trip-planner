@@ -20,6 +20,15 @@ export default function Header(props) {
     document.getElementById("myNav").style.height = "0%";
   }
 
+  const [autocomplete, setAutocomplete] = useState(null);
+  const onLoad = (autocomp) => setAutocomplete(autocomp);
+  const onPlaceChanged = () => {
+    const lat = autocomplete.getPlace().geometry.location.lat();
+    const lng = autocomplete.getPlace().geometry.location.lng();
+    props.setCoordinates({lat, lng});
+    console.log("SEARCH: ", lat, lng)
+  }
+
   return (
 
     <nav className={pathname === '/' ? 'nav-bar' : ''}>
