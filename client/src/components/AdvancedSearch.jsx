@@ -1,6 +1,13 @@
 import Header from "./Header";
 import './AdvancedSearch.scss'
 import GenerateButton from './GenerateButton';
+import {
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderMark,
+} from '@chakra-ui/react'
 
 
 export default function AdvancedSearch () {
@@ -35,6 +42,12 @@ export default function AdvancedSearch () {
               <span className="preference-title">
                 Buget of your trip
               </span>
+              <Slider defaultValue={30}>
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb />
+              </Slider>
 
             </li>
 

@@ -20,7 +20,6 @@ export default function Header(props) {
     document.getElementById("myNav").style.height = "0%";
   }
 
-  
   const [autocomplete, setAutocomplete] = useState(null);
   const onLoad = (autocomp) => setAutocomplete(autocomp);
   const onPlaceChanged = () => {
