@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 module.exports = db => {
-  router.get("/trend/location", (request, response) => {
+  router.get("/trend-attrctions", (request, response) => {
     db.query(
       `
       SELECT *
@@ -11,6 +11,7 @@ module.exports = db => {
     `
     ).then((data) => {
       response.json(data.rows);
+      console.log (data, "data")
     });
   });
 
