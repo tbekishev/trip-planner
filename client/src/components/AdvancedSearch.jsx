@@ -3,7 +3,6 @@ import './AdvancedSearch.scss'
 import GenerateButton from './GenerateButton';
 
 export default function AdvancedSearch () {
-
   return (
     <main>
       <section className='header'>
