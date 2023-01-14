@@ -17,7 +17,7 @@ export default function Home() {
           Start planning today
         </span>
         <span className="start-planning--description">
-          Let's go whild with a trip you didn't plan for.
+          Let's go wild with a trip you didn't plan for.
         </span>
       </section>
       

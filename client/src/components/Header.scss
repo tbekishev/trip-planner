@@ -40,7 +40,7 @@ nav {
   position: absolute;
   right: 0;
   font-size: 2em;
-  padding: 0.5em 0.7em;
+  padding: 0.3em 0.4em;
   align-self: flex-end;
 }
 
@@ -119,16 +119,18 @@ nav {
       font-size: 1.5em;
       color: $green;
     }
+
+    .user-avatar {
+
+      position: inherit;
+      background-color: $yellow;
+      color: white;
+      font-weight: bolder;
+      margin-right: 3vw;
+      border-radius: 50%;
+      height: 35px;
+      width: 35px;
+  
+    }
   }
 
-  .user-avatar {
-
-    background-color: white;
-    color: white;
-    font-weight: bolder;
-    margin-right: 1vw;
-    border-radius: 50%;
-    height: 35px;
-    width: 35px;
-
-  }

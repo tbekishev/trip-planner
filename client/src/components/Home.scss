@@ -14,7 +14,6 @@
   justify-content: flex-end;
   cursor: pointer;
 
-  @include card-border;
 
   &:hover {
     box-shadow: 1px 1px 5px #999;
@@ -39,7 +38,7 @@
 
   &--title {
     font-family: $main-font;
-    color: $green;
+    color: black;
     font-size: 2em;
   }
 
