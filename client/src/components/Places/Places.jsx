@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Header from '../Header';
 import Map from './Map';
 import List from './List';
-import { Box, Flex, Input, useColorMode } from '@chakra-ui/react';
+import { Box, Input, useColorMode } from '@chakra-ui/react';
 import { getPlacesData } from '../../api';
 import { Autocomplete } from "@react-google-maps/api";
 import { SearchIcon } from '@chakra-ui/icons';
+
+import './Places.scss';
 
 export default function Places(props) {
 
@@ -57,8 +59,8 @@ export default function Places(props) {
     setCoords({ lat, lng });
   };
   return (
-    <>    
-        <Header />
+    <Fragment>    
+      <Header />
       <Box pt={50}>
       <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
         <Box
@@ -79,9 +81,11 @@ export default function Places(props) {
           transition="all 0.2s" 
         />
         </Box>
-        </Autocomplete>
-        <Flex direction="row" justifyContent="center" alignItems="center">
-          <Box w="100%" maxW="40%">
+      </Autocomplete>
+
+        <section className='map-container'>
+
+          <Box>
             <List
               isLoading={isLoading}
               places={filteredPlaces.length ? filteredPlaces : places}
@@ -90,16 +94,17 @@ export default function Places(props) {
               rating={rating}
               setRating={setRating} />
           </Box> 
-          <Box w="100%" maxW="60%">
+          <Box className='map-container--map'
+>
             <Map 
               setBounds={setBounds}
               setCoords={setCoords}
               coords={coords}
               places={filteredPlaces.length ? filteredPlaces : places}
             /> 
-           </Box>   
-        </Flex>
+          </Box>   
+        </section>
       </Box> 
-    </>
+    </Fragment>
   );
 }

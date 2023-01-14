@@ -1,0 +1,11 @@
+.map-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &--map {
+    position: sticky;
+    bottom: 0px;
+  }
+
+}
