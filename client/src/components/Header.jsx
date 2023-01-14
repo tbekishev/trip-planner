@@ -1,10 +1,9 @@
 import './Header.scss';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { Avatar, Box, Input, useColorMode } from '@chakra-ui/react'
-import { Autocomplete } from "@react-google-maps/api";
-import { SearchIcon } from '@chakra-ui/icons';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Avatar } from '@chakra-ui/react'
+
 
 export default function Header(props) {
 

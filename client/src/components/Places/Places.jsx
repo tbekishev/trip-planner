@@ -1,11 +1,14 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useRef } from 'react';
 import Header from '../Header';
 import Map from './Map';
 import List from './List';
-import { Box, Input, useColorMode } from '@chakra-ui/react';
+import { Box, useColorMode } from '@chakra-ui/react';
 import { getPlacesData } from '../../api';
 import { Autocomplete } from "@react-google-maps/api";
 import { SearchIcon } from '@chakra-ui/icons';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import './Places.scss';
 
@@ -49,6 +52,12 @@ export default function Places(props) {
     }
   }, [bounds, type]);
 
+  
+  const textInput = useRef(null);
+  useEffect(() => {
+    textInput.current?.focus();
+  }, []);
+
   const onLoad = (autoC) => setAutocomplete(autoC);
   const { colorMode } = useColorMode()
 
@@ -57,31 +66,36 @@ export default function Places(props) {
     const lng = autocomplete.getPlace().geometry.location.lng();
 
     setCoords({ lat, lng });
+
   };
   return (
     <Fragment>    
       <Header />
-      <Box pt={50}>
-      <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-        <Box
-          rounded="md"
-          bg={colorMode === 'light' ? "white.15" : "gray.700"}
-          _hover={{ bg: colorMode === 'light' ? "white.25" : "gray.800" }}
-          mr={2}
-          width="100%"
-          pl={2}
-          position="relative"
-        >
-        <Box as={SearchIcon} position="absolute" pointerEvents="none" display="flex" alignItems="center" justifyContent="center" />
-          <Input placeholder="Search location" 
-          color="inherit" 
-          pl={10} 
-          width="100%" 
-          _md={{width: '20ch'}} 
-          transition="all 0.2s" 
-        />
-        </Box>
-      </Autocomplete>
+
+      <section className='layout'>
+
+        <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+          <Box
+            rounded="md"
+            bg={colorMode === 'light' ? "white.15" : "gray.700"}
+            _hover={{ bg: colorMode === 'light' ? "white.25" : "gray.800" }}
+            mr={2}
+            width="100%"
+            pl={2}
+            position="relative"
+            className='place-search'
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass} className='place-search--icon'/>
+
+            <input 
+              placeholder="Search location"
+              transition="all 0.2s" 
+              className='place-search--bar'
+              ref={textInput}
+            />
+            
+          </Box>
+        </Autocomplete>
 
         <section className='map-container'>
 
@@ -104,7 +118,8 @@ export default function Places(props) {
             /> 
           </Box>   
         </section>
-      </Box> 
+
+      </section> 
     </Fragment>
   );
 }

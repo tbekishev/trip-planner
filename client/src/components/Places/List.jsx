@@ -19,7 +19,7 @@ export default function List(props) {
         <section className='top-container'>
           <div className='filter'>
 
-            <FormControl>
+            <FormControl className='filter-item'>
               <FormLabel>Type</FormLabel>
               <Select value={props.type} onChange={(e) => props.setType(e.target.value)}>
                 <option value="attractions">Attractions</option>
@@ -27,7 +27,8 @@ export default function List(props) {
                 <option value="hotels">Hotels</option>
               </Select>
             </FormControl>
-            <FormControl>
+
+            <FormControl className='filter-item'>
               <FormLabel>Rating</FormLabel>
               <Select value={rating} onChange={(e) => setRating(e.target.value)}>
                 <option value="">All</option>
@@ -39,7 +40,7 @@ export default function List(props) {
           </div>
 
           <span className='planning-list--title'>
-            Attractions, Restaurants & hotels
+            Places to Visit
           </span>
 
         </section>

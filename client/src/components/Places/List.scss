@@ -5,5 +5,17 @@
 
   .filter {
     display: flex;
+    flex-direction: column;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      select {
+        margin-left: 1em;
+        
+      }
+    }
   }
 }
