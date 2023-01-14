@@ -22,7 +22,7 @@ export default function Header(props) {
 
   return (
 
-    <nav className={pathname === '/' ? 'nav-bar' : ''}>
+    <nav>
 
       <div id="myNav" className="overlay">
         <div className='overlay-header'>
@@ -39,28 +39,25 @@ export default function Header(props) {
           <a href="/" onClick={logout}>Log Out</a>
         </div>
       </div>
-
-      <h1 id='home-page-logo' className='overlay-header--logo' style={{display: pathname === '/' ? '' : 'none'}}>Triplogo</h1>
       
-      <a href='/' className='nav-logo' style={{display: pathname === '/' ? 'none' : ''}}>Triplogo</a>
+      <a href='/' className='nav-logo'>Triplogo</a>
 
-      <div className='search-bar' style={{'marginLeft': pathname === '/' ? '3em' : ''}}>
+      <div className='search-bar'>
 
         <div className='search-bar--style'>
-
-        </div>
 
         <Avatar 
           className='user-avatar'
           name={localStorage.getItem("user") ? `${obj.first_name} ${obj.last_name}` : null} 
           src='https://bit.ly/tioluwani-kolawole'
-          style={{'backgroundColor': pathname === '/' ? '' : '#7EA78B', 'position': 'inherit'}}
         />
+
+      </div>
 
         <FontAwesomeIcon 
           icon={faBars} 
           className="drop-down" 
-          onClick={openNav}        
+          onClick={openNav}  
         />
       </div>
 

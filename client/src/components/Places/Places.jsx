@@ -11,7 +11,7 @@ import './Places.scss';
 
 export default function Places(props) {
 
-  const [type, setType] = useState('restaurants');
+  const [type, setType] = useState('attractions');
   const [rating, setRating] = useState('');
 
   const [coords, setCoords] = useState({});

@@ -22,9 +22,9 @@ export default function List(props) {
             <FormControl>
               <FormLabel>Type</FormLabel>
               <Select value={props.type} onChange={(e) => props.setType(e.target.value)}>
+                <option value="attractions">Attractions</option>
                 <option value="restaurants">Restaurants</option>
                 <option value="hotels">Hotels</option>
-                <option value="attractions">Attractions</option>
               </Select>
             </FormControl>
             <FormControl>
