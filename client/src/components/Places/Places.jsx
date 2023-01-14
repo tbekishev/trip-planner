@@ -38,7 +38,6 @@ export default function Places(props) {
       setIsLoading(true);
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
-          console.log(data)
           setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
           setFilteredPlaces([]);
           setRating('');
@@ -62,21 +61,9 @@ export default function Places(props) {
       <Box pt={50}>
       <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
         <Box
-          rounded="md"
-          bg={colorMode === 'light' ? "white.15" : "gray.700"}
-          _hover={{ bg: colorMode === 'light' ? "white.25" : "gray.800" }}
-          mr={2}
-          width="100%"
-          pl={2}
-          position="relative"
         >
         <Box as={SearchIcon} position="absolute" pointerEvents="none" display="flex" alignItems="center" justifyContent="center" />
-          <Input placeholder="Search location" 
-          color="inherit" 
-          pl={10} 
-          width="100%" 
-          _md={{width: '20ch'}} 
-          transition="all 0.2s" 
+          <Input placeholder="Search location"  
         />
         </Box>
         </Autocomplete>
