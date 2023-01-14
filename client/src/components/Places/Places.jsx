@@ -69,18 +69,13 @@ export default function Places(props) {
   };
   return (
     <>    
-        <Header />
-        <section className='layout'>
+      <Header />
+      <section className='layout'>
+
         <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-        <Box
-          rounded="md"
-          bg={colorMode === 'light' ? "white.15" : "gray.700"}
-          _hover={{ bg: colorMode === 'light' ? "white.25" : "gray.800" }}
-          mr={2}
-          width="100%"
-          pl={2}
-          position="relative"
-        >
+
+        <Box className='place-search'>
+
           <FontAwesomeIcon icon={faMagnifyingGlass} className='place-search--icon'/>
 
           <input 
