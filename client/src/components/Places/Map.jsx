@@ -1,6 +1,7 @@
 import GoogleMapReact from 'google-map-react';
 import { useState } from 'react';
 import mapStyles from './mapStyles';
+import './Map.scss';
 
 
 export default function Map(props) {
@@ -10,7 +11,7 @@ export default function Map(props) {
   }
   return (
     <main>
-      <div style={{height: '85vh', width: '100%'}}>
+      <div className='map-style'>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
           defaultCenter={props.coords}
