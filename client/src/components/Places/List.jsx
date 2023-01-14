@@ -39,10 +39,6 @@ export default function List(props) {
             </FormControl> 
           </div>
 
-          <span className='planning-list--title'>
-            Places to Visit
-          </span>
-
         </section>
 
 
