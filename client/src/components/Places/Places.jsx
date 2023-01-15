@@ -2,12 +2,14 @@ import { Fragment, useEffect, useState, useRef } from 'react';
 import Header from '../Header';
 import Map from './Map';
 import List from './List';
-import { Box, useColorMode } from '@chakra-ui/react';
+import { Box, useColorMode, Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import { getPlacesData } from '../../api';
 import { Autocomplete } from "@react-google-maps/api";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faArrowRight, faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faArrowRight, faEarthAmericas, faGripLines } from '@fortawesome/free-solid-svg-icons';
+
+import { openNav, closeNav } from '../../helpers/dropDownHelper';
 
 import './Places.scss';
 
@@ -97,23 +99,24 @@ export default function Places(props) {
               rating={rating}
               setRating={setRating} />
           </Box> 
-          
-          {/* <Box className='map-container--map'>
+
+          <Box id="show-map" className='map-container--overlay'>
+            <FontAwesomeIcon icon={faGripLines} className='map-container--overlay__hide' onClick={() => closeNav('show-map')}/>
+
             <Map 
               setBounds={setBounds}
               setCoords={setCoords}
               coords={coords}
               places={filteredPlaces.length ? filteredPlaces : places}
             /> 
-          </Box>    */}
-
-          {/* <FontAwesomeIcon 
-            icon={faEarthAmericas} 
-            className="drop-down" 
-            onClick={openNav}  
-          /> */}
+          </Box>  
+          
         </section>
-
+        <FontAwesomeIcon 
+            icon={faEarthAmericas} 
+            className="show-map" 
+            onClick={() => openNav('show-map')}  
+          />
       </section> 
     </>
   );

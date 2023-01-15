@@ -50,16 +50,41 @@
       color: white;
     }
   }
+
 }
 
 .map-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  &--map {
+  
+  &--overlay {
+    z-index: 999;
+    height: 0px;
+    width: 100%;
     position: sticky;
     bottom: 0px;
-  }
 
+    background-color: transparent;
+    overflow-x: hidden;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__hide {
+      font-size: 2em;
+      text-align: center;
+    }
+  }
+}
+
+.show-map {
+  font-size: 50px;
+  font-weight: lighter;
+  position: fixed;
+  color: lightgray;
+  right: 15px;
+  bottom: 30px;
 }

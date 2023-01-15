@@ -19,7 +19,7 @@ export default function Header(props) {
       <div id="myNav" className="overlay">
         <div className='overlay-header'>
           <h1 className='overlay-header--logo'>Triplogo</h1>
-          <FontAwesomeIcon icon={faXmark} className="closebtn" onClick={closeNav}/>
+          <FontAwesomeIcon icon={faXmark} className="closebtn" onClick={() => closeNav('myNav')}/>
         </div>
 
         <div className="overlay-content">
@@ -49,7 +49,7 @@ export default function Header(props) {
         <FontAwesomeIcon 
           icon={faBars} 
           className="drop-down" 
-          onClick={openNav}  
+          onClick={() => openNav('myNav')}  
         />
       </div>
 
