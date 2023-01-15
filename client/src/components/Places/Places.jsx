@@ -18,7 +18,7 @@ export default function Places(props) {
   const [type, setType] = useState('attractions');
   const [rating, setRating] = useState('');
 
-  const [coords, setCoords] = useState({});
+  const [coords, setCoords] = useState(null);
   const [bounds, setBounds] = useState(null);
 
   const [filteredPlaces, setFilteredPlaces] = useState([]);
@@ -88,35 +88,39 @@ export default function Places(props) {
           </section>
         </Autocomplete>
 
-        <section className='map-container'>
 
-          <Box>
-            <List
-              isLoading={isLoading}
-              places={filteredPlaces.length ? filteredPlaces : places}
-              type={type}
-              setType={setType}
-              rating={rating}
-              setRating={setRating} />
-          </Box> 
+          <section className='map-container'>
 
-          <Box id="show-map" className='map-container--overlay'>
-            <FontAwesomeIcon icon={faGripLines} className='map-container--overlay__hide' onClick={() => closeNav('show-map')}/>
+            <Box>
+              <List
+                isLoading={isLoading}
+                places={filteredPlaces.length ? filteredPlaces : places}
+                type={type}
+                setType={setType}
+                rating={rating}
+                setRating={setRating} />
+            </Box> 
 
-            <Map 
-              setBounds={setBounds}
-              setCoords={setCoords}
-              coords={coords}
-              places={filteredPlaces.length ? filteredPlaces : places}
-            /> 
-          </Box>  
-          
-        </section>
-        <FontAwesomeIcon 
-            icon={faEarthAmericas} 
-            className="show-map" 
-            onClick={() => openNav('show-map')}  
-          />
+            <Box id="show-map" className='map-container--overlay'>
+              <FontAwesomeIcon icon={faGripLines} className='map-container--overlay__hide' onClick={() => closeNav('show-map')}/>
+
+              <Map 
+                setBounds={setBounds}
+                setCoords={setCoords}
+                coords={coords}
+                places={filteredPlaces.length ? filteredPlaces : places}
+              /> 
+            </Box>  
+            
+          </section>
+        
+          {coords && 
+            <FontAwesomeIcon 
+                icon={faEarthAmericas} 
+                className="show-map" 
+                onClick={() => openNav('show-map')}  
+              />
+          }
       </section> 
     </>
   );
