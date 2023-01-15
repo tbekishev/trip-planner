@@ -1,9 +1,6 @@
-import { useToast, Alert, AlertIcon, Card, CardBody, Heading, Stack, Image, Divider, CardFooter, ButtonGroup, Button, Box, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup, Tag } from '@chakra-ui/react';
-import { StarIcon, Icon, PhoneIcon, EmailIcon } from '@chakra-ui/icons';
+import { Image, Box, Text, Tag } from '@chakra-ui/react';
+import { StarIcon, PhoneIcon, EmailIcon } from '@chakra-ui/icons';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { RangeDatepicker, SingleDatepicker } from 'chakra-dayzed-datepicker';
-import axios from 'axios';
 import noImage from '../../img/no_image.jpg'
 
 export default function ListItems(props) {
@@ -27,7 +24,7 @@ export default function ListItems(props) {
       borderRadius='lg' 
       overflow='hidden'>
       <Image 
-        style={{ height: 350 }}
+        style={{ height: 150, width: '100%', objectFit: 'cover' }}
         src={props.place.photo ? props.place.photo.images.small.url : noImage}
         alt={props.place.name} />
 
