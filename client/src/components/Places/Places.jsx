@@ -5,10 +5,9 @@ import List from './List';
 import { Box, useColorMode } from '@chakra-ui/react';
 import { getPlacesData } from '../../api';
 import { Autocomplete } from "@react-google-maps/api";
-import { SearchIcon } from '@chakra-ui/icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faArrowRight, faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
 
 import './Places.scss';
 
@@ -99,14 +98,20 @@ export default function Places(props) {
               setRating={setRating} />
           </Box> 
           
-          <Box className='map-container--map'>
+          {/* <Box className='map-container--map'>
             <Map 
               setBounds={setBounds}
               setCoords={setCoords}
               coords={coords}
               places={filteredPlaces.length ? filteredPlaces : places}
             /> 
-          </Box>   
+          </Box>    */}
+
+          {/* <FontAwesomeIcon 
+            icon={faEarthAmericas} 
+            className="drop-down" 
+            onClick={openNav}  
+          /> */}
         </section>
 
       </section> 

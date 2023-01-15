@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Avatar } from '@chakra-ui/react'
+import { openNav, closeNav } from '../helpers/dropDownHelper';
 
 
 export default function Header(props) {
@@ -10,15 +11,7 @@ export default function Header(props) {
   const { pathname } = useLocation();
   const logout = () => localStorage.clear();
   const obj = JSON.parse(localStorage.getItem("user"));
-
-  const openNav = () => {
-    document.getElementById("myNav").style.height = "100%";
-  }
-
-  const closeNav = () => {
-    document.getElementById("myNav").style.height = "0%";
-  }
-
+  
   return (
 
     <nav>
