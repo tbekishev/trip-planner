@@ -1,4 +1,5 @@
 @import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
 
 .layout {
   @include layout-margin;
@@ -6,19 +7,23 @@
 
 .place-search {
   padding-top: 70px;
+  position: fixed;
 
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: start;
+  margin-left: 20px;
+  padding-right: 50px;
+  background-color: white;
+
+  width: 100%;
 
   &--bar {
-    width: 100%;
     height: 4em;
     box-shadow: 1px 1px 5px #999;    
     border-radius: 2em;
     padding-left: 4em;
-
+    width: 100%;
   }
 
   &--icon {
@@ -26,6 +31,24 @@
     font-size: large;
     padding-left: 30px;
     color: grey;
+  }
+
+  &--button {
+    cursor: pointer;
+    padding: 1em;
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    color: grey;
+    margin-left: 10px;
+    font-size: larger;
+
+    background-color: $yellow;
+
+    &:hover {
+      background-color: #6fd756;
+      color: white;
+    }
   }
 }
 

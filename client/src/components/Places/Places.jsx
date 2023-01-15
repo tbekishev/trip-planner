@@ -8,7 +8,7 @@ import { Autocomplete } from "@react-google-maps/api";
 import { SearchIcon } from '@chakra-ui/icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import './Places.scss';
 
@@ -74,22 +74,22 @@ export default function Places(props) {
 
         <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
 
-        <Box className='place-search'>
+          <section className='place-search'>
 
-          <FontAwesomeIcon icon={faMagnifyingGlass} className='place-search--icon'/>
+            <FontAwesomeIcon icon={faMagnifyingGlass} className='place-search--icon'/>
+            <input 
+              placeholder="Search location"
+              className='place-search--bar'
+              ref={textInput}
+            />
+            <FontAwesomeIcon icon={faArrowRight} className='place-search--button'/>
 
-          <input 
-            placeholder="Search location"
-            className='place-search--bar'
-            ref={textInput}
-          />
-
-          </Box>
+          </section>
         </Autocomplete>
 
         <section className='map-container'>
 
-        <Box>
+          <Box>
             <List
               isLoading={isLoading}
               places={filteredPlaces.length ? filteredPlaces : places}
@@ -98,8 +98,8 @@ export default function Places(props) {
               rating={rating}
               setRating={setRating} />
           </Box> 
-          <Box className='map-container--map'
->
+          
+          <Box className='map-container--map'>
             <Map 
               setBounds={setBounds}
               setCoords={setCoords}
