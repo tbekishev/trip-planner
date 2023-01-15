@@ -191,30 +191,30 @@ export default function Places(props) {
 
                 <FormLabel>Select Daily Ending Time</FormLabel>
                 <Select placeholder='Select option'>
-                  <option value='option8'>--Noon--</option>
-                  <option value='option9'>1:00PM</option>
-                  <option value='option10'>2:00PM</option>
-                  <option value='option11'>3:00PM</option>
-                  <option value='option12'>4:00PM</option>
-                  <option value='option13'>5:00PM</option>
-                  <option value='option14'>6:00PM</option>
-                  <option value='option15'>7:00PM</option>
-                  <option value='option16'>8:00PM</option>
-                  <option value='option17'>9:00PM</option>
-                  <option value='option18'>10:00PM</option>
-                  <option value='option19'>11:00PM</option>
-                  <option value='option20'>--Midnight--</option>
-                  <option value='option21'>1:00AM</option>
-                  <option value='option22'>2:00AM</option>
-                  <option value='option23'>3:00AM</option>
-                  <option value='option24'>4:00AM</option>
-                  <option value='option1'>5:00AM</option>
-                  <option value='option2'>6:00AM</option>
-                  <option value='option3'>7:00AM</option>
-                  <option value='option4'>8:00AM</option>
-                  <option value='option5'>9:00AM</option>
-                  <option value='option6'>10:00AM</option>
-                  <option value='option7'>11:00AM</option>
+                  <option value='option1'>--Noon--</option>
+                  <option value='option2'>1:00PM</option>
+                  <option value='option3'>2:00PM</option>
+                  <option value='option4'>3:00PM</option>
+                  <option value='option5'>4:00PM</option>
+                  <option value='option6'>5:00PM</option>
+                  <option value='option7'>6:00PM</option>
+                  <option value='option8'>7:00PM</option>
+                  <option value='option9'>8:00PM</option>
+                  <option value='option10'>9:00PM</option>
+                  <option value='option11'>10:00PM</option>
+                  <option value='option12'>11:00PM</option>
+                  <option value='option13'>--Midnight--</option>
+                  <option value='option14'>1:00AM</option>
+                  <option value='option15'>2:00AM</option>
+                  <option value='option16'>3:00AM</option>
+                  <option value='option17'>4:00AM</option>
+                  <option value='option18'>5:00AM</option>
+                  <option value='option19'>6:00AM</option>
+                  <option value='option20'>7:00AM</option>
+                  <option value='option21'>8:00AM</option>
+                  <option value='option22'>9:00AM</option>
+                  <option value='option23'>10:00AM</option>
+                  <option value='option24'>11:00AM</option>
                 </Select>
 
                 <FormControl>
