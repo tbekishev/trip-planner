@@ -1,12 +1,44 @@
 @import "../styles/variables.scss";
+@import '../styles/mixins.scss';
+
+.start-planning {
+  font-family: $main-font;
+  font-weight: 900;
+  font-size: 3em;
+  background-image: url(../../public/home-background.jpg);
+  width: 100vw;
+  background-size: cover;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+
+
+  &:hover {
+    box-shadow: 1px 1px 5px #999;
+  }
+
+  span {
+    padding-left: 10px;
+    color: white;
+    background-color: rgba(32, 36, 80, 0.5);
+  }
+
+  &--description {
+    font-family: $main-font;
+    font-weight: 400;
+    font-size: medium;
+    padding-bottom: 10px;
+  }
+}
 
 .planning-list {
-  margin-top: 230px;
   text-align: center;
 
   &--title {
     font-family: $main-font;
-    color: $green;
+    color: black;
     font-size: 2em;
   }
 

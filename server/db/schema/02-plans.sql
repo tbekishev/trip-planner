@@ -6,7 +6,7 @@ CREATE TABLE plans (
   name VARCHAR(255),
   start_date DATE,
   end_date DATE,
-  create_date DATE,
+  create_date TIMESTAMP DEFAULT NOW(),
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   location_id INTEGER
 );

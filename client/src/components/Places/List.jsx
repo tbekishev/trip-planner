@@ -43,6 +43,9 @@ export default function List(props) {
 
 
         <Box display="flex" flexWrap="wrap" style={{height: '75vh', overflow: 'auto'}}>
+          {/* <Box p={2}>
+            <ListItems  />
+          </Box> */}
            {props.places?.map((place, i) => (
             <Box key={i} p={2}>
               <ListItems place={place} />

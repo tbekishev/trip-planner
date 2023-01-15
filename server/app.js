@@ -5,12 +5,14 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const plansRouter = require('./routes/plans');
 const db = require("./db");
 const trendCities = require('./routes/trendCities');
 const trendLocations = require('./routes/trendLocations');
 const loginRouter = require("./routes/login");
 const profileRouter = require("./routes/profile");
 const userRegistration = require('./helpers/userRegistration')(db);
+const addLocation = require('./helpers/addLocation')(db);
 const cors = require('cors')
 
 const app = express();
@@ -27,8 +29,9 @@ app.use("/api", trendCities(db));
 app.use("/api", trendLocations(db));
 app.use('/', indexRouter);
 app.use('/users', usersRouter(userRegistration));
-app.use('/userslogin', loginRouter(db))
-app.use('/profile', profileRouter(db))
-app.use('/trend-attrctions', profileRouter(db))
+app.use('/userslogin', loginRouter(db));
+app.use('/profile', profileRouter(db));
+app.use('/trend-attrctions', profileRouter(db));
+app.use('/addlocation', plansRouter(addLocation));
 
 module.exports = app;

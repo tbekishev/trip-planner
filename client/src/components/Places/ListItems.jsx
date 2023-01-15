@@ -1,8 +1,11 @@
-import { Card, CardBody, Heading, Stack, Image, Divider, CardFooter, ButtonGroup, Button, Box, Badge } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
+import { Image, Box, Text, Tag } from '@chakra-ui/react';
+import { StarIcon, PhoneIcon, EmailIcon } from '@chakra-ui/icons';
+import React, { useEffect, useState } from 'react';
+import noImage from '../../img/no_image.jpg'
+
 export default function ListItems(props) {
 
-  const defaultImageUrl = `https://api.unsplash.com/search/photos?page=1&query=restaurant&client_id=${process.env.REACT_APP_UNSPLASHKEY}&per_page=10&orientation=landscape`;
+  const defaultImageUrl = '../../img/no_image.jpg';
 
   const property = {
     imageUrl: 'https://bit.ly/2Z4KKcF',
@@ -16,32 +19,16 @@ export default function ListItems(props) {
   }
 
   return (
-    <Box m
-      axW='sm' 
+    <Box 
       borderWidth='1px' 
       borderRadius='lg' 
       overflow='hidden'>
       <Image 
-        src={props.place.photo ? props.place.photo.images.small.url : defaultImageUrl} 
+        style={{ height: 150, width: '100%', objectFit: 'cover' }}
+        src={props.place.photo ? props.place.photo.images.small.url : noImage}
         alt={props.place.name} />
 
       <Box p='6'>
-        <Box display='flex' alignItems='baseline'>
-          <Badge borderRadius='full' px='2' colorScheme='teal'>
-            New
-          </Badge>
-          <Box
-            color='gray.500'
-            fontWeight='semibold'
-            letterSpacing='wide'
-            fontSize='xs'
-            textTransform='uppercase'
-            ml='2'
-          >
-            {property.beds} beds &bull; {property.baths} baths
-          </Box>
-        </Box>
-
         <Box
           mt='1'
           fontWeight='semibold'
@@ -52,58 +39,57 @@ export default function ListItems(props) {
           {props.place.name}
         </Box>
 
-        <Box>
-          {props.place.price_level}
-        </Box>
-
         <Box display='flex' mt='2' alignItems='center'>
           {Array(5)
             .fill('')
             .map((_, i) => (
               <StarIcon
                 key={i}
-                color={i < property.rating ? 'gold' : 'gray.300'}
+                color={i < Number(props.place.rating) ? 'gold' : 'gray.300'}
                 icon='star'
               />
             ))}
-          <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-            {property.reviewCount} reviews
+          <Box as='span' ml='40' color='gray.600' fontSize='sm'>
+            {props.place.num_reviews} reviews
           </Box>
         </Box>
-      <Button variant='solid' colorScheme='blue'>
-        Add to my plan
-      </Button>
-      </Box>
+        {props.place.price_level &&
+        <Box >
+          Price
+        <Box as='span' ml='60'>
+          {props.place.price_level}
+        </Box>
+        </Box> }
+        <Box >
+          Ranking
+        <Box as='span' ml='5'>
+          {props.place.ranking}
+        </Box>
+        </Box>
+        {props.place?.awards?.map((award) => (
+          <Box d="flex" justifyContent="space-between" my={1} alignItems="center">
+          <img src={award.images.small} alt={props.place.name} />
+          <Text variant="subtitle2" color="gray.600">{award.display_name}</Text>
+          </Box>
+        ))}
+        <Box>
+        {props.place?.cuisine?.map(({ name }) => (
+          <Tag key={name} size="sm" variantColor="green" mr={2} >{name}</Tag>
+        ))}
+        </Box>
+        {props.place.address && (
+          <Text as="p" mb={2} color="gray.600">
+            <EmailIcon name="location" mr={2} /> {props.place.address}
+          </Text>
+        )}
+        {props.place.phone && (
+          <Text as="p" color="gray.600">
+            <PhoneIcon mr={2} /> {props.place.phone}
+          </Text>
+        )}
+        
+      
+      </Box>      
     </Box>
-  )
+  );
 }
-//   return (
-//       <Card maxW={'sm'}>
-//         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-//           <Image
-//             src={props.place.photo ? props.place.photo.images.small.url : defaultImageUrl}
-//             alt={props.place.name}
-//           />
-//           <Box p='6'>
-//             <Box display='flex' alignItems='baseline'>
-//             </Box>
-//             <Box>
-//               {props.place.price_level}
-//             </Box>
-//           </Box>
-//         </Box>
-//         <CardBody>
-//           <Stack mt='6' spacing='3'>
-//             <Heading size='md'>{props.place.name}</Heading>
-            
-//           </Stack>
-//         </CardBody>
-//         <Divider/>
-//         <CardFooter>
-//           <ButtonGroup spacing='2'>
-//             <Button variant='solid' colorScheme='yellow'>Add to my plan</Button>
-//           </ButtonGroup>
-//         </CardFooter>
-//       </Card>
-//   );
-// }

@@ -1,0 +1,24 @@
+.top-container {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  .filter {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+      padding
+
+      select {
+        margin-left: 1em;
+        
+      }
+    }
+  }
+}

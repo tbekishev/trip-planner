@@ -1,7 +1,10 @@
 import GoogleMapReact from 'google-map-react';
 import { useState } from 'react';
 import mapStyles from './mapStyles';
-
+import './Map.scss';
+import { StarIcon } from '@chakra-ui/icons';
+import noImage from '../../img/no_image.jpg';
+import { Box, Text } from '@chakra-ui/react';
 
 export default function Map(props) {
   const changeHandler = (event) => {
@@ -10,7 +13,7 @@ export default function Map(props) {
   }
   return (
     <main>
-      <div style={{height: '85vh', width: '100%'}}>
+      <div className='map-style'>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
           defaultCenter={props.coords}
@@ -25,10 +28,32 @@ export default function Map(props) {
                 lat={Number(place.latitude)}
                 lng={Number(place.longitude)}
                 key={index}
+                style={{position: 'absolute', transform: 'translate(-50%, -50%)', zIndex: 1, '&:hover': { zIndex: 2 }}}
               >
-              {
-                <img src={place.photo ? place.photo.images.thumbnail.url : `https://api.unsplash.com/search/photos?page=1&query=restaurant&client_id=${process.env.REACT_APP_UNSPLASHKEY}&per_page=10&orientation=landscape`} alt={place.name}></img>
-              }
+                <Box 
+                  p={2} 
+                  boxShadow="md"
+                  style={{
+                    padding: '10px', 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    justifyContent: 'center', 
+                    width: '80px',
+                    backgroundColor: 'white'
+                  }}
+                  >
+                <Text as="h2"  mb={2}>{place.name}</Text>
+                <img src={place.photo && place.photo.images.thumbnail.url} alt={place.name}></img>
+                <Box>
+              {Array(5)
+                .fill('')
+                .map((_, i) => (
+                <StarIcon
+                  key={i}
+                  color={i < Number(place.rating) ? 'gold' : 'gray.300'}
+                  icon='star'
+                />
+              ))}</Box></Box>
               </div>
             ))}
         </GoogleMapReact>     

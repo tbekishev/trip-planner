@@ -1,0 +1,90 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.layout {
+  @include layout-margin;
+}
+
+.place-search {
+  padding-top: 70px;
+  position: fixed;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20px;
+  padding-right: 50px;
+  background-color: white;
+
+  width: 100%;
+
+  &--bar {
+    height: 4em;
+    box-shadow: 1px 1px 5px #999;    
+    border-radius: 2em;
+    padding-left: 4em;
+    width: 100%;
+  }
+
+  &--icon {
+    position: fixed;
+    font-size: large;
+    padding-left: 30px;
+    color: grey;
+  }
+
+  &--button {
+    cursor: pointer;
+    padding: 1em;
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    color: grey;
+    margin-left: 10px;
+    font-size: larger;
+
+    background-color: $yellow;
+
+    &:hover {
+      background-color: #6fd756;
+      color: white;
+    }
+  }
+
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  &--overlay {
+    z-index: 999;
+    height: 0px;
+    width: 100%;
+    position: sticky;
+    bottom: 0px;
+
+    background-color: transparent;
+    overflow-x: hidden;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__hide {
+      font-size: 2em;
+      text-align: center;
+    }
+  }
+}
+
+.show-map {
+  font-size: 50px;
+  font-weight: lighter;
+  position: fixed;
+  color: lightgray;
+  right: 15px;
+  bottom: 30px;
+}
