@@ -1,4 +1,4 @@
-import { useToast, Alert, AlertIcon, Card, CardBody, Heading, Stack, Image, Divider, CardFooter, ButtonGroup, Button, Box, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup } from '@chakra-ui/react';
+import { useToast, Image, Button, Box, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
