@@ -24,9 +24,9 @@ export default function Header(props) {
 
         <div className="overlay-content">
           <a href="/">Home</a>
-          <a href="places">Start Planning</a>
-          <a href="profile">My Page</a>
-          <a href="register">Account</a>
+          <a href="/places">Start Planning</a>
+          <a href="/profile">My Page</a>
+          <a href="/register">Account</a>
           <a href="/" onClick={logout}>Log Out</a>
         </div>
       </div>
