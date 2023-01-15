@@ -13,6 +13,9 @@ import { faMagnifyingGlass, faArrowRight, faEarthAmericas, faGripLines } from '@
 
 import { openNav, closeNav } from '../../helpers/dropDownHelper';
 
+import axios from 'axios';
+
+
 import './Places.scss';
 
 export default function Places(props) {
@@ -39,6 +42,44 @@ export default function Places(props) {
   const handlePlanNameChange = (event) => {
     setPlanName(event.target.value);
   }
+
+  const obj = JSON.parse(localStorage.getItem("user"));
+  const toast = useToast()
+
+
+  const clickHandler = (event) => {
+    event.preventDefault();
+    axios
+      .post("/addlocation", {
+        name: planName, 
+        start_date: selectedDates[0], 
+        end_date: selectedDates[1],  
+        user_id: obj.id, 
+        location_id: props.place.location_id,
+        locationName: props.place.name,
+        cityName: props.place.location_string,
+        rate: props.place.rating, 
+      })
+      .then((result) => {
+        onClose();
+        toast({
+          title: 'Location is added to your plan.',
+          description: "We've created your plan for you.",
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+        })
+      })
+      .catch((error) => {
+        toast({
+          title: 'Error.',
+          description: "Your plan is not created. Try again later.",
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+        })
+      })
+    }
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {

@@ -1,9 +1,6 @@
-import { useToast, Image, Button, Box, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup } from '@chakra-ui/react';
+import { Image, Box, Badge } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { RangeDatepicker, SingleDatepicker } from 'chakra-dayzed-datepicker';
-import axios from 'axios';
 
 export default function ListItems(props) {
 
@@ -19,59 +16,6 @@ export default function ListItems(props) {
     reviewCount: 34,
     rating: 4,
   }
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
-  const [selectedDates, setSelectedDates] = useState([new Date(), new Date()]);
-  const obj = JSON.parse(localStorage.getItem("user"));
-  const [amount, setAmount] = useState('');
-  const [planName, setPlanName] = useState('');
-  const toast = useToast()
-
-  const handleAmountChange = (event) => {
-    setAmount(event.target.value);
-  }
-
-  const handlePlanNameChange = (event) => {
-    setPlanName(event.target.value);
-  }
-
-  const clickHandler = (event) => {
-    event.preventDefault();
-    axios
-      .post("/addlocation", {
-        name: planName, 
-        start_date: selectedDates[0], 
-        end_date: selectedDates[1],  
-        user_id: obj.id, 
-        location_id: props.place.location_id,
-        locationName: props.place.name,
-        cityName: props.place.location_string,
-        rate: props.place.rating, 
-        average_budget: amount
-      })
-      .then((result) => {
-        onClose();
-        toast({
-          title: 'Location is added to your plan.',
-          description: "We've created your plan for you.",
-          status: 'success',
-          duration: 4000,
-          isClosable: true,
-        })
-      })
-      .catch((error) => {
-        toast({
-          title: 'Error.',
-          description: "Your plan is not created. Try again later.",
-          status: 'error',
-          duration: 4000,
-          isClosable: true,
-        })
-      })
-    
-  }
-
 
   return (
     <Box 
@@ -127,88 +71,6 @@ export default function ListItems(props) {
             {property.reviewCount} reviews
           </Box>
         </Box>
-      <Button variant='solid' colorScheme='blue' onClick={onOpen} >
-        Add to my plan
-      </Button>
-      {localStorage.getItem("user") ? (
-        <Modal
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
-        isOpen={isOpen}
-        onClose={onClose}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Add this location to your plan</ModalHeader>
-          <ModalCloseButton />
-          <Text fontSize='3xl'>{property.name}</Text>
-          <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel>Select Dates</FormLabel>
-              <RangeDatepicker
-                selectedDates={selectedDates}
-                onDateChange={setSelectedDates}
-                minDate={new Date()}
-              />
-              <FormControl>
-                <FormLabel>Average Budget</FormLabel>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents='none'
-                    color='gray.300'
-                    fontSize='1.2em'
-                    children='$'
-                  />
-                  <Input placeholder='Enter amount' onChange={handleAmountChange} />
-                </InputGroup>
-              </FormControl>
-              <FormControl>
-                <FormLabel>Name the Plan</FormLabel>
-                <Input ref={initialRef} placeholder='Plan name...' onChange={handlePlanNameChange}/>
-              </FormControl>
-            </FormControl>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button onClick={clickHandler} colorScheme='blue' mr={3}>
-              Add
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-      ):(
-        <Modal
-          initialFocusRef={initialRef}
-          finalFocusRef={finalRef}
-          isOpen={isOpen}
-          onClose={onClose}
-        >
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Log in to your account</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody pb={6}>
-              <FormControl>
-                <FormLabel>Email</FormLabel>
-                <Input ref={initialRef} placeholder='First name' />
-              </FormControl>
-  
-              <FormControl mt={4}>
-                <FormLabel>Password</FormLabel>
-                <Input placeholder='Last name' />
-              </FormControl>
-            </ModalBody>
-  
-            <ModalFooter>
-              <Button colorScheme='blue' mr={3}>
-                Login
-              </Button>
-              <Button onClick={onClose}>Cancel</Button>
-            </ModalFooter>
-              <Link color='teal.500' to='/register'>Don't have an account? Register here</Link>
-          </ModalContent>
-        </Modal>)};
       
       </Box>      
     </Box>
