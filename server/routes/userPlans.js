@@ -1,17 +1,17 @@
 const router = require("express").Router();
 
 module.exports = db => {
-  router.get("/trend/city", (request, response) => {
+  router.get("/plans/:id", (request, response) => {
+    console.log(request.params)
     db.query(
       `
-      SELECT name, COUNT(*) as count
+      SELECT *
       FROM plans
-      GROUP BY name
-      ORDER BY COUNT
-      LIMIT 5;
+      WHERE user_id = ${request.params.id};
     `
     ).then((data) => {
       response.json(data.rows);
+      // console.log (data, "data")
     });
   });
 

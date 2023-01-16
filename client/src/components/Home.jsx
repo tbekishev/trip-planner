@@ -23,10 +23,10 @@ export default function Home() {
       
       <section className='planning-list' style={{marginTop: pathname === '/' ? '30px' : ''}}>
 
-        <span className='planning-list--title'>Popular Plannings</span>
+        <span className='planning-list--title'>{localStorage.getItem("user") ? 'My' : 'Popular'} Plannings</span>
 
         <div className='planning-list--container'>
-          <PlanningList />
+        {localStorage.getItem("user") && <PlanningList />}          
         </div>
       </section>
 

@@ -36,16 +36,13 @@ export default function List(props) {
 
         </section>
       {props.isLoading ? (
-        <Box justifyContent="center" alignItems="center" d="flex">
-          <CircularProgress isIndeterminate color="teal" size="5rem" />
+        <Box width="100%" height="100%" justifyContent="center" alignItems="center" d="flex">
+          <CircularProgress isIndeterminate color="orange" size="5rem" />
         </Box>
       ) : (
 
 
-        <Box display="flex" flexWrap="wrap" style={{height: '75vh', overflow: 'auto'}}>
-          {/* <Box p={2}>
-            <ListItems  />
-          </Box> */}
+        <Box display="flex" flexWrap="wrap" style={{height: '100%', overflow: 'auto'}}>
            {props.places?.map((place, i) => (
             <Box key={i} p={2}>
               <ListItems place={place} />

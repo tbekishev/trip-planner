@@ -88,7 +88,7 @@ export default function Places(props) {
   }, []);
 
   useEffect(() => {
-    const filtered = places.filter((place) => Number(place.rating) > rating);
+    const filtered = places.filter((place) => Number(place.rating) > Number(rating));
 
     setFilteredPlaces(filtered);
   }, [rating]);

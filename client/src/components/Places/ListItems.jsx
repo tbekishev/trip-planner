@@ -1,7 +1,7 @@
 import { Image, Box, Text, Tag } from '@chakra-ui/react';
 import { StarIcon, PhoneIcon, EmailIcon } from '@chakra-ui/icons';
 import React, { useEffect, useState } from 'react';
-import noImage from '../../img/no_image.jpg'
+import noImage from '../../img/no_image.jpg';
 
 export default function ListItems(props) {
 

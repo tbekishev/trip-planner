@@ -1,9 +1,6 @@
 import GoogleMapReact from 'google-map-react';
-import { useState } from 'react';
-import mapStyles from './mapStyles';
 import './Map.scss';
 import { StarIcon } from '@chakra-ui/icons';
-import noImage from '../../img/no_image.jpg';
 import { Box, Text } from '@chakra-ui/react';
 
 export default function Map(props) {
@@ -31,8 +28,6 @@ export default function Map(props) {
                 style={{position: 'absolute', transform: 'translate(-50%, -50%)', zIndex: 1, '&:hover': { zIndex: 2 }}}
               >
                 <Box 
-                  p={2} 
-                  boxShadow="md"
                   style={{
                     padding: '10px', 
                     display: 'flex', 
