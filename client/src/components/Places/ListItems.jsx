@@ -18,6 +18,8 @@ export default function ListItems(props) {
       borderWidth='1px' 
       borderRadius='lg' 
       overflow='hidden'
+      width='350px'
+      height='400px'    
       onClick={() => {
 
         if (selected) {
@@ -30,7 +32,7 @@ export default function ListItems(props) {
       className={placeCardClass}
       >
       <Image 
-        style={{ height: 150, width: '100%', objectFit: 'cover' }}
+        style={{ height: 150, width: '100%', objectFit: 'scale-down' }}
         src={props.place.photo ? props.place.photo.images.small.url : noImage}
         alt={props.place.name} />
 

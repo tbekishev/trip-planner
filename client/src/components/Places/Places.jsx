@@ -139,11 +139,29 @@ export default function Places(props) {
             />
             <FontAwesomeIcon icon={faArrowRight} className='place-search--button' onClick={onOpen}/>
 
+              {coords && 
+                <FontAwesomeIcon 
+                    icon={faEarthAmericas} 
+                    className="show-map" 
+                    onClick={() => openNav('show-map')}  
+                  />
+              }
           </section>
         </Autocomplete>
 
 
           <section className='map-container'>
+
+            <Box id="show-map" className='map-container--overlay'>
+
+              <Map 
+                setBounds={setBounds}
+                setCoords={setCoords}
+                coords={coords}
+                places={filteredPlaces.length ? filteredPlaces : places}
+              /> 
+            </Box>  
+              <FontAwesomeIcon icon={faGripLines} className='map-container--overlay__hide' onClick={() => closeNav('show-map')}/>
 
             <Box>
               <List
@@ -155,27 +173,9 @@ export default function Places(props) {
                 setRating={setRating} 
                 />
             </Box> 
-
-            <Box id="show-map" className='map-container--overlay'>
-              <FontAwesomeIcon icon={faGripLines} className='map-container--overlay__hide' onClick={() => closeNav('show-map')}/>
-
-              <Map 
-                setBounds={setBounds}
-                setCoords={setCoords}
-                coords={coords}
-                places={filteredPlaces.length ? filteredPlaces : places}
-              /> 
-            </Box>  
             
           </section>
         
-          {coords && 
-            <FontAwesomeIcon 
-                icon={faEarthAmericas} 
-                className="show-map" 
-                onClick={() => openNav('show-map')}  
-              />
-          }
 
         <Modal
           initialFocusRef={initialRef}

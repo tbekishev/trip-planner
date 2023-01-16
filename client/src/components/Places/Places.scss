@@ -24,6 +24,7 @@
     border-radius: 2em;
     padding-left: 4em;
     width: 100%;
+    margin-right: 15px;
   }
 
   &--icon {
@@ -42,6 +43,9 @@
     color: grey;
     margin-left: 10px;
     font-size: larger;
+    position: fixed;
+    right: 15px;
+    bottom: 30px;
 
     background-color: $yellow;
 
@@ -83,8 +87,5 @@
 .show-map {
   font-size: 50px;
   font-weight: lighter;
-  position: fixed;
   color: lightgray;
-  right: 15px;
-  bottom: 30px;
 }
