@@ -1,0 +1,13 @@
+@import '../../styles/variables.scss';
+
+.place-card {
+  cursor: pointer;
+
+  &--selected {
+    opacity: 30%;
+  }
+
+  &:hover {
+    box-shadow: 1px 1px 10px #999;
+  }
+}

@@ -152,7 +152,8 @@ export default function Places(props) {
                 type={type}
                 setType={setType}
                 rating={rating}
-                setRating={setRating} />
+                setRating={setRating} 
+                />
             </Box> 
 
             <Box id="show-map" className='map-container--overlay'>

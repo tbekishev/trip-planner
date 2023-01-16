@@ -1,28 +1,34 @@
 import { Image, Box, Text, Tag } from '@chakra-ui/react';
 import { StarIcon, PhoneIcon, EmailIcon } from '@chakra-ui/icons';
 import React, { useEffect, useState } from 'react';
-import noImage from '../../img/no_image.jpg';
+import noImage from '../../img/no_image.jpg'
+import classNames from "classnames";
+
+import './ListItems.scss';
 
 export default function ListItems(props) {
+  const [selected, setSelected] = useState('');
 
-  const defaultImageUrl = '../../img/no_image.jpg';
-
-  const property = {
-    imageUrl: 'https://bit.ly/2Z4KKcF',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  }
+  const placeCardClass = classNames('place-card', {
+    'place-card--selected': selected === props.place.location_id
+  })
 
   return (
     <Box 
       borderWidth='1px' 
       borderRadius='lg' 
-      overflow='hidden'>
+      overflow='hidden'
+      onClick={() => {
+
+        if (selected) {
+          setSelected('')
+        }
+        if (!selected) {
+          setSelected(props.place.location_id)}
+        }
+      }
+      className={placeCardClass}
+      >
       <Image 
         style={{ height: 150, width: '100%', objectFit: 'cover' }}
         src={props.place.photo ? props.place.photo.images.small.url : noImage}
