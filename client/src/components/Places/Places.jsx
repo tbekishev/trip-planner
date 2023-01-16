@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Header from '../Header';
 import Map from './Map';
 import List from './List';
 import { Box, useColorMode, Select, useToast, Image, Button, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup  } from '@chakra-ui/react';
-import { RangeDatepicker, SingleDatepicker } from 'chakra-dayzed-datepicker';
+import { RangeDatepicker } from 'chakra-dayzed-datepicker';
 
 import { getPlacesData } from '../../api';
 import { Autocomplete } from "@react-google-maps/api";
@@ -38,6 +38,9 @@ export default function Places(props) {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [selectedDates, setSelectedDates] = useState([new Date(), new Date()]);
+
+  const [attractions, setAttractions] = useState([]);
+  console.log(attractions);
 
   const handlePlanNameChange = (event) => {
     setPlanName(event.target.value);
@@ -153,6 +156,8 @@ export default function Places(props) {
                 setType={setType}
                 rating={rating}
                 setRating={setRating} 
+                value={attractions}
+                onChange={setAttractions}
                 />
             </Box> 
 
