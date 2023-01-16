@@ -7,10 +7,10 @@ import classNames from "classnames";
 import './ListItems.scss';
 
 export default function ListItems(props) {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState('');
 
   const placeCardClass = classNames('place-card', {
-    'place-card--selected': selected
+    'place-card--selected': selected === props.place.location_id
   })
 
   return (
@@ -19,11 +19,12 @@ export default function ListItems(props) {
       borderRadius='lg' 
       overflow='hidden'
       onClick={() => {
+
         if (selected) {
-          setSelected(false)
+          setSelected('')
         }
         if (!selected) {
-          setSelected(true)}
+          setSelected(props.place.location_id)}
         }
       }
       className={placeCardClass}

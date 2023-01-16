@@ -8,6 +8,7 @@ export default function List(props) {
   const isLoading = false;
   const [rating, setRating] = useState('');
   return (
+
     <Box style={{padding: '25px'}}>
 
       {isLoading ? (
@@ -48,7 +49,7 @@ export default function List(props) {
           </Box> */}
            {props.places?.map((place, i) => (
             <Box key={i} p={2}>
-              <ListItems place={place} />
+              <ListItems place={place}/>
             </Box>
           ))}
         </Box>       
