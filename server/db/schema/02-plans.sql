@@ -9,7 +9,5 @@ CREATE TABLE plans (
   end_date DATE,
   starting_time VARCHAR(255),
   ending_time VARCHAR(255),
-  create_date TIMESTAMP DEFAULT NOW(),
-  location_id INTEGER,
   group_size INTEGER
 );
