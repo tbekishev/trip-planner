@@ -1,8 +1,8 @@
 module.exports = (db) => {
   const addPlanning = (user_id, name, start_date, end_date, starting_time, ending_time, location_id, group_size) => {
     const query = {
-      text: ` INSERT INTO plans (user_id, name, visits_id, start_date, end_date, starting_time, ending_time, location_id, group_size)
-      VALUES ($1, $2, $4, $5, $6, $7, $8, $9)
+      text: ` INSERT INTO plans (user_id, name, start_date, end_date, starting_time, ending_time, location_id, group_size)
+      VALUES ($1, $2, $4, $5, $6, $7, $8)
       RETURNING *`,
       values: [user_id, name, start_date, end_date, starting_time, ending_time, location_id, group_size],
     };

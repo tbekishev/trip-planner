@@ -11,5 +11,5 @@ CREATE TABLE plans (
   ending_time VARCHAR(255),
   create_date TIMESTAMP DEFAULT NOW(),
   location_id INTEGER,
-  group_size INTEGER,
+  group_size INTEGER
 );
