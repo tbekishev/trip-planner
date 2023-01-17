@@ -11,20 +11,19 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
+  // const addVisits = (plan_id, attrction_id) => {
+  //   const query = {
+  //     text: ` INSERT INTO visits (plan_id, attrction_id)
+  //     VALUES ($1, $2)
+  //     RETURNING *`,
+  //     values: [plan_id, attrction_id],
+  //   };
+  //   return db
+  //     .query(query)
+  //     .then((result) => result.rows[0])
+  //     .catch((err) => err);
+  // };
 
-  const addVisits = (plan_id, attrction_id) => {
-    const query = {
-      text: ` INSERT INTO visits (plan_id, attrction_id)
-      VALUES ($1, $2)
-      RETURNING *`,
-      values: [plan_id, attrction_id],
-    };
-    return db
-      .query(query)
-      .then((result) => result.rows[0])
-      .catch((err) => err);
-  };
-
-  return { addPlanning, addVisits };
+  return { addPlanning };
 }
   

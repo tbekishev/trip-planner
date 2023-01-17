@@ -13,7 +13,8 @@ const loginRouter = require("./routes/login");
 const profileRouter = require("./routes/profile");
 const userRegistration = require('./helpers/userRegistration')(db);
 const addLocation = require('./helpers/addLocation')(db);
-const cors = require('cors')
+const cors = require('cors');
+const addPlanning = require('./helpers/addPlanning')(db);
 
 const app = express();
 // app.use(cors())
@@ -32,6 +33,7 @@ app.use('/users', usersRouter(userRegistration));
 app.use('/userslogin', loginRouter(db));
 app.use('/profile', profileRouter(db));
 app.use('/trend-attrctions', profileRouter(db));
-app.use('/addlocation', plansRouter(addLocation));
+// app.use('/addlocation', plansRouter(addLocation));
+app.use('/addplanning', plansRouter(addPlanning));
 
 module.exports = app;
