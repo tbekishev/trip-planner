@@ -40,7 +40,6 @@ export default function Places(props) {
   const [selectedDates, setSelectedDates] = useState([new Date(), new Date()]);
 
   const [attractions, setAttractions] = useState([]);
-  console.log(attractions);
 
   const handlePlanNameChange = (event) => {
     setPlanName(event.target.value);
@@ -49,6 +48,17 @@ export default function Places(props) {
   const obj = JSON.parse(localStorage.getItem("user"));
   const toast = useToast()
 
+  const userPlanning = {
+    user_id: obj.id,
+    name: '',
+    attractions: attractions,
+    start_date: '',
+    end_date: '',
+    starting_time: '',
+    ending_time: '',
+    group_size: '',
+    location_id: '',
+  }
 
   const clickHandler = (event) => {
     event.preventDefault();
@@ -273,7 +283,7 @@ export default function Places(props) {
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme='blue' mr={3}>
+              <Button colorScheme='blue' mr={3} type='submit'>
                 Confirm
               </Button>
               <Button onClick={onClose}>Cancel</Button>
