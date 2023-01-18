@@ -1,9 +1,10 @@
-import { useToast, Alert, AlertIcon, Card, CardBody, Heading, Stack, Image, Divider, CardFooter, ButtonGroup, Button, Box, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
+import { useToast, Alert, AlertIcon, Card, CardBody, Heading, Stack, Image, Divider, CardFooter, ButtonGroup, Button, Box, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup, Tag } from '@chakra-ui/react';
+import { EmailIcon, PhoneIcon, StarIcon } from '@chakra-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RangeDatepicker, SingleDatepicker } from 'chakra-dayzed-datepicker';
 import axios from 'axios';
+import noImage from '../../img/no_image.jpg'
 
 export default function ListItems(props) {
 
@@ -77,28 +78,15 @@ export default function ListItems(props) {
     <Box 
       borderWidth='1px' 
       borderRadius='lg' 
-      overflow='hidden'>
+      overflow='hidden'
+      width='100%'
+      height='500px'>
       <Image 
-        src={props.place.photo ? props.place.photo.images.small.url : defaultImageUrl}
+        style={{ height: 150, width: '100%', objectFit: 'scale-down' }}
+        src={props.place.photo ? props.place.photo.images.small.url : noImage}
         alt={props.place.name} />
 
-      <Box p='6'>
-        <Box display='flex' alignItems='baseline'>
-          <Badge borderRadius='full' px='2' colorScheme='teal'>
-            New
-          </Badge>
-          <Box
-            color='gray.500'
-            fontWeight='semibold'
-            letterSpacing='wide'
-            fontSize='xs'
-            textTransform='uppercase'
-            ml='2'
-          >
-            {property.beds} beds &bull; {property.baths} baths
-          </Box>
-        </Box>
-
+      <Box p='6'> 
         <Box
           mt='1'
           fontWeight='semibold'
@@ -109,24 +97,54 @@ export default function ListItems(props) {
           {props.place.name}
         </Box>
 
-        <Box>
-          {property.formattedPrice}
-        </Box>
-
         <Box display='flex' mt='2' alignItems='center'>
           {Array(5)
             .fill('')
             .map((_, i) => (
               <StarIcon
                 key={i}
-                color={i < property.rating ? 'gold' : 'gray.300'}
+                color={i < Number(props.place.rating) ? 'gold' : 'gray.300'}
                 icon='star'
               />
             ))}
           <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-            {property.reviewCount} reviews
+            {props.place.num_reviews} reviews
           </Box>
         </Box>
+        {props.place.price_level &&
+        <Box >
+          Price
+        <Box as='span' ml='60'>
+          {props.place.price_level}
+        </Box>
+        </Box> }
+        <Box >
+          Ranking
+        <Box as='span' ml='5'>
+          {props.place.ranking}
+        </Box>
+        </Box>
+        {props.place?.awards?.map((award) => (
+          <Box d="flex" justifyContent="space-between" my={1} alignItems="center">
+          <img src={award.images.small} alt={props.place.name} />
+          <Text variant="subtitle2" color="gray.600">{award.display_name}</Text>
+          </Box>
+        ))}
+        <Box>
+        {props.place?.cuisine?.map(({ name }) => (
+          <Tag key={name} size="sm" variantColor="green" mr={2} >{name}</Tag>
+        ))}
+        </Box>
+        {props.place.address && (
+          <Text as="p" mb={2} color="gray.600">
+            <EmailIcon name="location" mr={2} /> {props.place.address}
+          </Text>
+        )}
+        {props.place.phone && (
+          <Text as="p" color="gray.600">
+            <PhoneIcon mr={2} /> {props.place.phone}
+          </Text>
+        )}
       <Button variant='solid' colorScheme='blue' onClick={onOpen} >
         Add to my plan
       </Button>

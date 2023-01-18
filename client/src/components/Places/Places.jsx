@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Header from '../Header';
 import Map from './Map';
 import List from './List';
@@ -6,6 +6,9 @@ import { Box, Flex, Input, useColorMode } from '@chakra-ui/react';
 import { getPlacesData } from '../../api';
 import { Autocomplete } from "@react-google-maps/api";
 import { SearchIcon } from '@chakra-ui/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import './Places.scss';
 
 export default function Places(props) {
 
@@ -55,18 +58,27 @@ export default function Places(props) {
 
     setCoords({ lat, lng });
   };
+  const textInput = useRef(null);
+  useEffect(() => {
+    textInput.current?.focus();
+  }, []);
   return (
     <>    
         <Header />
       <Box pt={50}>
       <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-        <Box
-        >
-        <Box as={SearchIcon} position="absolute" pointerEvents="none" display="flex" alignItems="center" justifyContent="center" />
-          <Input placeholder="Search location"  
-        />
-        </Box>
+
+          <section className='place-search'>
+
+            <FontAwesomeIcon icon={faMagnifyingGlass} className='place-search--icon'/>
+            <input 
+              placeholder="Search location"
+              className='place-search--bar'
+              ref={textInput}
+            />
+          </section>
         </Autocomplete>
+        <Box width='20'></Box>
         <Flex direction="row" justifyContent="center" alignItems="center">
           <Box w="100%" maxW="40%">
             <List
