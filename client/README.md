@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+## Trip Planner 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Usage : 
+This Project is a travel planning app that gives user the ability to search and find hotels, attractions, popular local restaurants of their travel destination.
+The user can view and select attractions from list or map view and add them to their plan.  the plan should have a name. 
+users or guests could see the popular plans on home page 
+users can also view their previous plans on their own page.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Demo
+Home Page ( popular plans)
+()
 
-### `npm start`
+Start to make plan : insert a destination and select the attractions that you want and add them to the plan
+()
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+User Profile :  user can see their own previous plans on this page
+()
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup
 
-### `npm test`
+Fork the repo
+Clone from your fork
+Install dependencies with `npm install` for both server and client side.
+npm start in server side and client side. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## devDependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Remember you had to install a very specific version of react-test-renderer to match the version of react and react-dom in the project. you can follow the instructions from the react-hooks-testing-library documetation 
+: (https://github.com/testing-library/react-hooks-testing-library#peer-dependencies)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Tech Stack 
+Client Side : React using React Router , Styling with sass and chakra
+Server Side : Express
+using the API KEY of Google and unplash
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Authors
+Contributors names and contact info :
 
-### Code Splitting
+Tuigun Bekishev
+Ruoning Jin
+Rouzbeh Berenji
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+In the situation that you are facing problems starting up the application please contact one of us  at tbekishev@gmail.com, ronjin2013@hotmail.com, berenji.ro@gmail.com
 
-### Analyzing the Bundle Size
+## License
+THIS IS A STUDENT PROJECT! Not Licensed or recommended for professional production use.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Acknowledgments
+Inspiration, code snippets, etc.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -9,5 +9,5 @@ CREATE TABLE plans (
   create_date TIMESTAMP DEFAULT NOW(),
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   location_id INTEGER,
-  cover_photo_url STRING
+  cover_photo_url VARCHAR
 );

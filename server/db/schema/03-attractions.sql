@@ -7,5 +7,5 @@ CREATE TABLE attractions (
   city VARCHAR(255),
   rate FLOAT,
   average_budget FLOAT,
-  photo_url STRING
+  photo_url VARCHAR
 );
