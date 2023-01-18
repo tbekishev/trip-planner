@@ -1,12 +1,12 @@
 module.exports = (db) => {
-  const planningId = () => {
+  const planningId = (id) => {
     const query = {
       text: `
       SELECT *
       FROM plans
-      WHERE id = 2;
-      `
-      // values: [user_id, name, start_date, end_date, starting_time, ending_time, group_size],
+      ORDER BY id DESC
+      LIMIT 1;
+      `,
     };
     return db
       .query(query)
