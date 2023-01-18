@@ -6,6 +6,8 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const plansRouter = require('./routes/plans');
+const planningIdRouter = require('./routes/planningId');
+
 const db = require("./db");
 const trendCities = require('./routes/trendCities');
 const trendLocations = require('./routes/trendLocations');
@@ -15,6 +17,7 @@ const userRegistration = require('./helpers/userRegistration')(db);
 const addLocation = require('./helpers/addLocation')(db);
 const cors = require('cors');
 const addPlanning = require('./helpers/addPlanning')(db);
+const planningId = require('./helpers/planningId')(db);
 
 const app = express();
 // app.use(cors())
@@ -35,5 +38,6 @@ app.use('/profile', profileRouter(db));
 app.use('/trend-attrctions', profileRouter(db));
 // app.use('/addlocation', plansRouter(addLocation));
 app.use('/addplanning', plansRouter(addPlanning));
+app.use('/planningid', planningIdRouter(planningId));
 
 module.exports = app;
