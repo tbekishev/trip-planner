@@ -7,7 +7,7 @@ module.exports = () => {
 
 
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.OPENAI_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
 
@@ -17,6 +17,7 @@ module.exports = () => {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: req.query.prompt,
+      max_tokens: 2000
     });
 
     res.send(completion.data.choices[0].text);
