@@ -4,6 +4,7 @@ import Map from './Map';
 import List from './List';
 import { Box, useColorMode, Select, useToast, Image, Button, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup  } from '@chakra-ui/react';
 import { RangeDatepicker } from 'chakra-dayzed-datepicker';
+import { useNavigate } from "react-router-dom";
 
 import { getPlacesData } from '../../api';
 import { Autocomplete } from "@react-google-maps/api";
@@ -40,6 +41,8 @@ export default function Places(props) {
   const [selectedDates, setSelectedDates] = useState([new Date(), new Date()]);
 
   const [attractions, setAttractions] = useState([]);
+  localStorage.setItem("attractions", JSON.stringify(attractions));
+
   const [groupSize, setGroupSize] = useState([]);
   const [startingTime, setStartingTime] = useState([]);
   const [endingTime, setEndingTime] = useState([]);
@@ -63,6 +66,8 @@ export default function Places(props) {
 
   const obj = JSON.parse(localStorage.getItem("user"));
   const toast = useToast()
+
+  let navigate = useNavigate(); 
 
   const userPlanning = {
     user_id: obj.id,
@@ -97,7 +102,8 @@ export default function Places(props) {
           status: 'success',
           duration: 4000,
           isClosable: true,
-        })
+        });
+        navigate('/planningId');
       })
       .catch((error) => {
         toast({

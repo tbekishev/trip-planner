@@ -9,7 +9,7 @@ import './ListItems.scss';
 export default function ListItems(props) {
 
   const placeCardClass = classNames('place-card', {
-    'place-card--selected': props.value.includes(props.place.location_id)
+    'place-card--selected': props.value.includes(props.place.name)
   })
 
   return (
@@ -19,11 +19,11 @@ export default function ListItems(props) {
       overflow='hidden'
       onClick={() => {
 
-        if (props.value.includes(props.place.location_id)) {
+        if (props.value.includes(props.place.name)) {
           props.setAttractions(() => [])
         }
-        if (!props.value.includes(props.place.location_id)) {
-          props.setAttractions([...props.value, props.place.location_id])}
+        if (!props.value.includes(props.place.name)) {
+          props.setAttractions([...props.value, props.place.name])}
         }
       }
       className={placeCardClass}
