@@ -1,6 +1,7 @@
 import Header from './Header';
 import { useState, useEffect } from "react";
 import axios from "axios";
+import moment from 'moment';
   
 export default function PlanningId() {
 
@@ -8,6 +9,7 @@ export default function PlanningId() {
   const [response, setResponse] = useState("");
   const [state, setState] = useState('');
   const [prompt, setPrompt] = useState('');
+  // localStorage.setItem("user", JSON.stringify(user));
 
   useEffect(() => {
     
@@ -15,20 +17,22 @@ export default function PlanningId() {
     .get(`http://localhost:8080/planningid`)
     .then((request, response) => {
 
-
       setState(request.data);
-
-      const attractions = JSON.parse(localStorage.getItem("attractions"));
-
-      const text = (`Create a trip timetable for ${attractions.toString()} from ${state.start_date} to ${state.end_date} with the time window of ${state.starting_time} to ${state.ending_time} each day`); 
-      setPrompt(text);
-
 
     })
     .catch((err) => err);
   }, []);
 
   useEffect(() => {
+    const attractions = JSON.parse(localStorage.getItem("attractions"));
+
+    const text = (`Create a trip timetable for attractions: ${attractions.toString()}, from ${moment(state.start_date).format('YYYY-MM-DD')} to ${moment(state.end_date).format('YYYY-MM-DD')} with the time window of ${state.starting_time} to ${state.ending_time} each day`); 
+    setPrompt(text);
+  }, [state])
+
+  useEffect(() => {
+    console.log(prompt);
+
       axios
       .get("http://localhost:8080/generateschedule", 
         {
@@ -39,7 +43,6 @@ export default function PlanningId() {
       )
       .then((res) => {
         setResponse(res.data);
-        console.log(res);
       })
       .catch((err) => {
         console.error(err);
@@ -49,7 +52,7 @@ export default function PlanningId() {
   return (
     <main>
       <Header />
-      <h1 style={{fontSize: '50px', marginTop: '100px'}}>{response}</h1>
+      {response}
     </main>
   );
 }
