@@ -7,10 +7,9 @@ import classNames from "classnames";
 import './ListItems.scss';
 
 export default function ListItems(props) {
-  const [selected, setSelected] = useState('');
 
   const placeCardClass = classNames('place-card', {
-    'place-card--selected': selected === props.place.location_id
+    'place-card--selected': props.value.includes(props.place.name)
   })
 
   return (
@@ -22,11 +21,11 @@ export default function ListItems(props) {
       height='400px'    
       onClick={() => {
 
-        if (selected) {
-          setSelected('')
+        if (props.value.includes(props.place.name)) {
+          props.setAttractions(() => [])
         }
-        if (!selected) {
-          setSelected(props.place.location_id)}
+        if (!props.value.includes(props.place.name)) {
+          props.setAttractions([...props.value, props.place.name])}
         }
       }
       className={placeCardClass}

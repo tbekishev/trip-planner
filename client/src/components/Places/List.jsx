@@ -46,7 +46,7 @@ export default function List(props) {
         <Box display="flex" flexWrap="wrap" style={{height: '100%', overflow: 'auto'}}>
            {props.places?.map((place, i) => (
             <Box key={i} p={2}>
-              <ListItems place={place}/>
+              <ListItems place={place} value={props.value} setAttractions={props.onChange}/>
             </Box>
           ))}
         </Box> 

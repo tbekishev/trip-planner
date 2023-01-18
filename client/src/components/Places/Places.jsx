@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Header from '../Header';
 import Map from './Map';
 import List from './List';
 import { Box, useColorMode, Select, useToast, Image, Button, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup  } from '@chakra-ui/react';
-import { RangeDatepicker, SingleDatepicker } from 'chakra-dayzed-datepicker';
+import { RangeDatepicker } from 'chakra-dayzed-datepicker';
+import { useNavigate } from "react-router-dom";
 
 import { getPlacesData } from '../../api';
 import { Autocomplete } from "@react-google-maps/api";
@@ -39,26 +40,59 @@ export default function Places(props) {
   const finalRef = React.useRef(null);
   const [selectedDates, setSelectedDates] = useState([new Date(), new Date()]);
 
+  const [attractions, setAttractions] = useState([]);
+  localStorage.setItem("attractions", JSON.stringify(attractions));
+
+  const [groupSize, setGroupSize] = useState([]);
+  const [startingTime, setStartingTime] = useState([]);
+  const [endingTime, setEndingTime] = useState([]);
+
+
   const handlePlanNameChange = (event) => {
     setPlanName(event.target.value);
+  }
+
+  const handleStartingTime = (event) => {
+    setStartingTime(event.target.value);
+  }
+
+  const handleEndingTime = (event) => {
+    setEndingTime(event.target.value);
+  }
+
+  const handleGroupSizeChange = (event) => {
+    setGroupSize(event.target.value);
   }
 
   const obj = JSON.parse(localStorage.getItem("user"));
   const toast = useToast()
 
+  let navigate = useNavigate(); 
+
+  const userPlanning = {
+    user_id: obj.id,
+    name: planName,
+    attractions: attractions,
+    start_date: selectedDates[0],
+    end_date: selectedDates[1],
+    starting_time: startingTime,
+    ending_time: endingTime,
+    group_size: groupSize,
+  }
 
   const clickHandler = (event) => {
     event.preventDefault();
     axios
-      .post("/addlocation", {
-        name: planName, 
-        start_date: selectedDates[0], 
-        end_date: selectedDates[1],  
-        user_id: obj.id, 
-        location_id: props.place.location_id,
-        locationName: props.place.name,
-        cityName: props.place.location_string,
-        rate: props.place.rating, 
+      .post("/addplanning", {
+
+        user_id: obj.id,
+        name: planName,
+        start_date: selectedDates[0],
+        end_date: selectedDates[1],
+        starting_time: startingTime,
+        ending_time: endingTime,
+        group_size: groupSize,
+        
       })
       .then((result) => {
         onClose();
@@ -68,7 +102,8 @@ export default function Places(props) {
           status: 'success',
           duration: 4000,
           isClosable: true,
-        })
+        });
+        navigate('/planningId');
       })
       .catch((error) => {
         toast({
@@ -171,6 +206,8 @@ export default function Places(props) {
                 setType={setType}
                 rating={rating}
                 setRating={setRating} 
+                value={attractions}
+                onChange={setAttractions}
                 />
             </Box> 
             
@@ -204,71 +241,71 @@ export default function Places(props) {
                 />
 
                 <FormLabel>Select Daily Starting Time</FormLabel>
-                <Select placeholder='Select option'>
-                  <option value='option1'>5:00AM</option>
-                  <option value='option2'>6:00AM</option>
-                  <option value='option3'>7:00AM</option>
-                  <option value='option4'>8:00AM</option>
-                  <option value='option5'>9:00AM</option>
-                  <option value='option6'>10:00AM</option>
-                  <option value='option7'>11:00AM</option>
-                  <option value='option8'>--Noon--</option>
-                  <option value='option9'>1:00PM</option>
-                  <option value='option10'>2:00PM</option>
-                  <option value='option11'>3:00PM</option>
-                  <option value='option12'>4:00PM</option>
-                  <option value='option13'>5:00PM</option>
-                  <option value='option14'>6:00PM</option>
-                  <option value='option15'>7:00PM</option>
-                  <option value='option16'>8:00PM</option>
-                  <option value='option17'>9:00PM</option>
-                  <option value='option18'>10:00PM</option>
-                  <option value='option19'>11:00PM</option>
-                  <option value='option20'>--Midnight--</option>
-                  <option value='option21'>1:00AM</option>
-                  <option value='option22'>2:00AM</option>
-                  <option value='option23'>3:00AM</option>
-                  <option value='option24'>4:00AM</option>
+                <Select placeholder='Select option' onChange={handleStartingTime}>
+                  <option value='5:00AM'>5:00AM</option>
+                  <option value='6:00AM'>6:00AM</option>
+                  <option value='7:00AM'>7:00AM</option>
+                  <option value='8:00AM'>8:00AM</option>
+                  <option value='9:00AM'>9:00AM</option>
+                  <option value='10:00AM'>10:00AM</option>
+                  <option value='11:00AM'>11:00AM</option>
+                  <option value='Noon'>--Noon--</option>
+                  <option value='1:00PM'>1:00PM</option>
+                  <option value='2:00PM'>2:00PM</option>
+                  <option value='3:00PM'>3:00PM</option>
+                  <option value='4:00PM'>4:00PM</option>
+                  <option value='5:00PM'>5:00PM</option>
+                  <option value='6:00PM'>6:00PM</option>
+                  <option value='7:00PM'>7:00PM</option>
+                  <option value='8:00PM'>8:00PM</option>
+                  <option value='9:00PM'>9:00PM</option>
+                  <option value='10:00PM'>10:00PM</option>
+                  <option value='11:00PM'>11:00PM</option>
+                  <option value='Midnight'>--Midnight--</option>
+                  <option value='1:00AM'>1:00AM</option>
+                  <option value='2:00AM'>2:00AM</option>
+                  <option value='3:00AM'>3:00AM</option>
+                  <option value='4:00AM'>4:00AM</option>
                 </Select>
 
                 <FormLabel>Select Daily Ending Time</FormLabel>
-                <Select placeholder='Select option'>
-                  <option value='option1'>--Noon--</option>
-                  <option value='option2'>1:00PM</option>
-                  <option value='option3'>2:00PM</option>
-                  <option value='option4'>3:00PM</option>
-                  <option value='option5'>4:00PM</option>
-                  <option value='option6'>5:00PM</option>
-                  <option value='option7'>6:00PM</option>
-                  <option value='option8'>7:00PM</option>
-                  <option value='option9'>8:00PM</option>
-                  <option value='option10'>9:00PM</option>
-                  <option value='option11'>10:00PM</option>
-                  <option value='option12'>11:00PM</option>
-                  <option value='option13'>--Midnight--</option>
-                  <option value='option14'>1:00AM</option>
-                  <option value='option15'>2:00AM</option>
-                  <option value='option16'>3:00AM</option>
-                  <option value='option17'>4:00AM</option>
-                  <option value='option18'>5:00AM</option>
-                  <option value='option19'>6:00AM</option>
-                  <option value='option20'>7:00AM</option>
-                  <option value='option21'>8:00AM</option>
-                  <option value='option22'>9:00AM</option>
-                  <option value='option23'>10:00AM</option>
-                  <option value='option24'>11:00AM</option>
+                <Select placeholder='Select option' onChange={handleEndingTime}>
+                  <option value='Noon'>--Noon--</option>
+                  <option value='1:00PM'>1:00PM</option>
+                  <option value='2:00PM'>2:00PM</option>
+                  <option value='3:00PM'>3:00PM</option>
+                  <option value='4:00PM'>4:00PM</option>
+                  <option value='5:00PM'>5:00PM</option>
+                  <option value='6:00PM'>6:00PM</option>
+                  <option value='7:00PM'>7:00PM</option>
+                  <option value='8:00PM'>8:00PM</option>
+                  <option value='9:00PM'>9:00PM</option>
+                  <option value='10:00PM'>10:00PM</option>
+                  <option value='11:00PM'>11:00PM</option>
+                  <option value='Midnight'>--Midnight--</option>
+                  <option value='1:00AM'>1:00AM</option>
+                  <option value='2:00AM'>2:00AM</option>
+                  <option value='3:00AM'>3:00AM</option>
+                  <option value='4:00AM'>4:00AM</option>
+                  <option value='5:00AM'>5:00AM</option>
+                  <option value='6:00AM'>6:00AM</option>
+                  <option value='7:00AM'>7:00AM</option>
+                  <option value='8:00AM'>8:00AM</option>
+                  <option value='9:00AM'>9:00AM</option>
+                  <option value='10:00AM'>10:00AM</option>
+                  <option value='11:00AM'>11:00AM</option>
                 </Select>
 
                 <FormControl>
                   <FormLabel>Group Size</FormLabel>
-                  <Input placeholder='Group of...'/>
+                  <Input placeholder='Group of...' onChange={handleGroupSizeChange}/>
                 </FormControl>
                 
               </FormControl>
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme='blue' mr={3}>
+              <Button colorScheme='blue' mr={3} type='submit' onClick={clickHandler}>
                 Confirm
               </Button>
               <Button onClick={onClose}>Cancel</Button>
