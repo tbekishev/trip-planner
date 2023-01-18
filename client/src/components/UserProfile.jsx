@@ -7,6 +7,7 @@ import PlanningListItem from './PlanningListItem';
 import axios  from 'axios';
 import { redirect } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PlanningList from './PlanningList';
 
 
 export default function UserProfile() {
@@ -50,7 +51,7 @@ return (
     <section className='user_profile' style={{ 'marginTop': '10px'}}>My Previous Plans</section>
       <br /><br />
       <div className='planning-list--container'>
-        {UserPlanningList}
+        {localStorage.getItem("user") && <PlanningList />}     
       </div>
     
   </main>
