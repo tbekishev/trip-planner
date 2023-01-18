@@ -27,7 +27,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -53,7 +53,7 @@ app.use('/userslogin', loginRouter(db));
 app.use('/profile', profileRouter(db));
 app.use('/trend-attrctions', profileRouter(db));
 app.use('/api', userPlans(db));
-app.use('/addlocation', plansRouter(addLocation));
+// app.use('/addlocation', plansRouter(addLocation));
 app.use('/addplanning', plansRouter(addPlanning));
 app.use('/planningid', planningIdRouter(planningId));
 app.use('/generateschedule', generateSchedule());
