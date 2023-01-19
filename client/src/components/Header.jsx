@@ -15,45 +15,44 @@ export default function Header(props) {
   
   return (
 
-    <nav>
+      <nav>
+        <div id="myNav" className="overlay" onMouseLeave={() => closeNav('myNav')}>
+          <div className='overlay-header'>
+            <h1 className='overlay-header--logo'>Triplogo</h1>
+          </div>
 
-      <div id="myNav" className="overlay">
-        <div className='overlay-header'>
-          <h1 className='overlay-header--logo'>Triplogo</h1>
-          <FontAwesomeIcon icon={faXmark} className="closebtn" onClick={() => closeNav('myNav')}/>
+          <div className="overlay-content">
+            <a href="/">Home</a>
+            <a href="/places">Start Planning</a>
+            <a href="/profile">My Page</a>
+            <a href="/register">Account</a>
+            <a href="/" onClick={logout}>Log Out</a>
+          </div>
         </div>
 
-        <div className="overlay-content">
-          <a href="/">Home</a>
-          <a href="/places">Start Planning</a>
-          <a href="/profile">My Page</a>
-          <a href="/register">Account</a>
-          <a href="/" onClick={logout}>Log Out</a>
+        <a href='/' className='nav-logo'>Triplogo</a>
+
+        <div className='search-bar'>
+
+          <div className='search-bar--style'>
+
+          <Avatar 
+            className='user-avatar'
+            name={localStorage.getItem("user") ? `${obj.first_name} ${obj.last_name}` : null} 
+            src='https://bit.ly/tioluwani-kolawole'
+          />
+
         </div>
-      </div>
-      
-      <a href='/' className='nav-logo'>Triplogo</a>
 
-      <div className='search-bar'>
-
-        <div className='search-bar--style'>
-
-        <Avatar 
-          className='user-avatar'
-          name={localStorage.getItem("user") ? `${obj.first_name} ${obj.last_name}` : null} 
-          src='https://bit.ly/tioluwani-kolawole'
-        />
-
-      </div>
-
-        <FontAwesomeIcon 
-          icon={faBars} 
-          className="drop-down" 
-          onClick={() => openNav('myNav')}  
-        />
-      </div>
+          <FontAwesomeIcon 
+            icon={faBars} 
+            className="drop-down" 
+            onMouseEnter={() => openNav('myNav')}  
+          />
+        </div>
 
 
-    </nav>
+      </nav>
+
   );
 }

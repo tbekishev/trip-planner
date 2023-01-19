@@ -12,7 +12,7 @@ import { Autocomplete } from "@react-google-maps/api";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faArrowRight, faEarthAmericas, faGripLines } from '@fortawesome/free-solid-svg-icons';
 
-import { openNav, closeNav } from '../../helpers/dropDownHelper';
+import { openNav, closeNav, openNavH, closeNavH, } from '../../helpers/dropDownHelper';
 
 import axios from 'axios';
 
@@ -177,7 +177,7 @@ export default function Places(props) {
                 <FontAwesomeIcon 
                     icon={faEarthAmericas} 
                     className="show-map" 
-                    onClick={() => openNav('show-map')}  
+                    onClick={() => openNavH('show-map')}  
                   />
               }
           </section>
@@ -195,7 +195,7 @@ export default function Places(props) {
                 places={filteredPlaces.length ? filteredPlaces : places}
               /> 
             </Box>  
-              <FontAwesomeIcon icon={faGripLines} className='map-container--overlay__hide' onClick={() => closeNav('show-map')}/>
+              <FontAwesomeIcon icon={faGripLines} className='map-container--overlay__hide' onClick={() => closeNavH('show-map')}/>
 
             <Box>
               <List

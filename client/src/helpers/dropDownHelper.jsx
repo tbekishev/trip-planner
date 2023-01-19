@@ -6,4 +6,12 @@ const closeNav = (id) => {
   document.getElementById(id).style.width = "0";
 }
 
-export {openNav, closeNav};
+const openNavH = (id) => {
+  document.getElementById(id).style.height = "100%";
+}
+
+const closeNavH = (id) => {
+  document.getElementById(id).style.height = "0";
+}
+
+export {openNav, closeNav, openNavH, closeNavH, };

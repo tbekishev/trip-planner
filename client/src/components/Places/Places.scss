@@ -73,7 +73,7 @@
     background-color: transparent;
     overflow-x: hidden;
     background-color: transparent;
-
+    
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -88,6 +88,5 @@
 .show-map {
   font-size: 50px;
   font-weight: lighter;
-  color: lightgray;
-  
+  color: $yellow;
 }
