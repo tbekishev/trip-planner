@@ -6,6 +6,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const plansRouter = require('./routes/plans');
+const locationRouter = require('./routes/locations');
 const planningIdRouter = require('./routes/planningId');
 const generateSchedule = require('./routes/generateSchedule');
 
@@ -18,6 +19,7 @@ const addLocation = require('./helpers/addLocation')(db);
 const cors = require('cors')
 const addPlanning = require('./helpers/addPlanning')(db);
 const planningId = require('./helpers/planningId')(db);
+const reschedule = require('./helpers/reschedule')(db);
 
 const userPlans = require('./routes/userPlans');
 
@@ -57,5 +59,6 @@ app.use('/addlocation', plansRouter(addLocation));
 //app.use('/addplanning', plansRouter(addPlanning));
 app.use('/planningid', planningIdRouter(planningId));
 app.use('/generateschedule', generateSchedule());
+app.use('/reschedule', locationRouter(reschedule))
 
 module.exports = app;

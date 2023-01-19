@@ -34,6 +34,7 @@ const dateList = locationGroups.map(([date, locations]) => (
             {locations.map(location => (
                 <PlanningListItem 
                   key={location.id}
+                  id={location.id}
                   name={location.name}
                   city={location.city}
                   rate={location.rate}
