@@ -3,18 +3,31 @@
 
 .planning-list {
   margin-top: 400px;
-  text-align: center;
 
   &--title {
     font-family: $main-font;
-    color: $green;
-    font-size: 2em;
-    text-align: center;
+    color: black;
+    font-size: 3em;
+    margin-left: 400px;
+
+  }
+  
+  &--subtitle {
+    font-family: $main-font;
+    margin-left: 410px;
+    margin-top: -10px;
   }
 
   &--container {
-    padding: 10px;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding: 0;
     margin-top: 1em;
+
+    .attraction-list {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
 

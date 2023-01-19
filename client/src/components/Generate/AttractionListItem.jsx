@@ -8,20 +8,21 @@ import {
   Image,
 } from '@chakra-ui/react'
 import noImage from '../../img/no_image.jpg';
+import './AttractionListItem.scss';
 
 export default function AttractionListItem(props) {
 
   return (      
-    <Card maxW='sm'>
+    <Card className='attraction'>
     <CardBody>
-    <Heading size='md'>{props.name}</Heading>
+    <Heading fontWeight='300' size='md'>{props.name}</Heading>
       <Image
         src={props.photo_url === 'noImage' ? noImage : props.photo_url}
         alt={props.name}
-        borderRadius='lg'
+        className='attraction-img'
       />
-      <Stack mt='6' spacing='3'>
-        <Text>{props.city}</Text>
+      <Stack>
+        <Text className='attraction-city'>{props.city}</Text>
         <Text color='blue.600' fontSize='2xl'>
         {Array(5)
                         .fill('')

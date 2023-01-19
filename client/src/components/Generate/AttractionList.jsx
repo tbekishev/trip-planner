@@ -19,7 +19,7 @@ export default function AttractionList() {
   
 
   return (
-    <div>{state.map(location => (
+    <div className='attraction-list'>{state.map(location => (
       <AttractionListItem 
         key={location.id}
         name={location.name}

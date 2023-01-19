@@ -1,0 +1,24 @@
+@import '../../styles/variables.scss';
+
+.attraction {
+  width: 350px;
+  font-family: $main-font;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.034);
+  }
+
+  &-img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 0.75em;
+  }
+
+  p {
+    text-align: end;
+    font-weight: 300;
+  }
+}

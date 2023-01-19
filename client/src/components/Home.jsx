@@ -22,8 +22,10 @@ export default function Home() {
       </section>
       
       <section className='planning-list' style={{marginTop: pathname === '/' ? '30px' : ''}}>
-
-        <span className='planning-list--title'>Popular locations</span>
+        <div className="title">
+          <span className='planning-list--title'>Must go, must have fun</span>
+          <span className='planning-list--subtitle'>Hot locations of travellar's choice 2023</span>
+        </div>
 
         <div className='planning-list--container'>
           <AttractionList/>

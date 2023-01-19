@@ -2,12 +2,18 @@
 @import '../styles/mixins.scss';
 
 .start-planning {
+
+  margin-top: 70px;
+  margin-bottom: -15px;
+  padding-bottom: 20px;
   font-family: $main-font;
   font-weight: 900;
   font-size: 3em;
   background-image: url(../../public/home-background.jpg);
-  width: 100vw;
+  margin-left: 400px;
+  margin-right: 400px;
   background-size: cover;
+  border-radius: 0.375em;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -34,7 +40,6 @@
 }
 
 .planning-list {
-  text-align: center;
 
   &--title {
     font-family: $main-font;
@@ -46,4 +51,9 @@
     padding: 10px;
     margin-top: 1em;
   }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
 }
