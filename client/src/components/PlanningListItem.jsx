@@ -1,5 +1,5 @@
 import './PlanningListItem.scss';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from 'axios';
 import noImage from '../img/no_image.jpg';
 import { SingleDatepicker } from 'chakra-dayzed-datepicker';
@@ -25,16 +25,53 @@ import {
   FormLabel,
   ModalFooter,
   useDisclosure,
-  useToast
+  useToast,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogBody,
+  AlertDialogFooter
 } from '@chakra-ui/react'
 import { StarIcon } from '@chakra-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
 export default function PlanningListItem(props) {
   
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const rescheduleDisclosure = useDisclosure();
+  const deleteDisclosure = useDisclosure();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const toast = useToast();
+  const cancelRef = useRef();
+  const navigate = useNavigate();
 
+  const deleteHandler =(event) => {
+    event.preventDefault();
+    axios
+      .post("/locationdelete", {
+        location_id: props.id
+      })
+      .then((result) => {
+        deleteDisclosure.onClose();
+        navigate('/profile');
+        toast({
+          title: 'Location is deleted!',
+          description: "We've deleted your location for you.",
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+        })
+      })
+      .catch((error) => {
+        toast({
+          title: 'Error.',
+          description: "Your location is not deleted. Try again later.",
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+        })
+      })
+  }
   const clickHandler = (event) => {
     event.preventDefault();
     axios
@@ -43,7 +80,8 @@ export default function PlanningListItem(props) {
         new_date: selectedDate
       })
       .then((result) => {
-        onClose();
+        rescheduleDisclosure.onClose();
+        navigate('/profile');
         toast({
           title: 'Reschedule is done',
           description: "We've rescheduled your plan for you.",
@@ -93,12 +131,12 @@ export default function PlanningListItem(props) {
     <Divider />
     <CardFooter>
       <ButtonGroup spacing='2'>
-        <Button variant='solid' colorScheme='yellow' onClick={onOpen}>
+        <Button variant='solid' colorScheme='yellow' onClick={rescheduleDisclosure.onOpen}>
           Reschedule
         </Button>
         <Modal
-        isOpen={isOpen}
-        onClose={onClose}
+        isOpen={rescheduleDisclosure.isOpen}
+        onClose={rescheduleDisclosure.onClose}
       >
         <ModalOverlay />
         <ModalContent>
@@ -120,13 +158,39 @@ export default function PlanningListItem(props) {
             <Button onClick={clickHandler} colorScheme='blue' mr={3}>
               Reschedule
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={rescheduleDisclosure.onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-        <Button variant='ghost' colorScheme='red'>
+        <Button variant='ghost' colorScheme='red' onClick={deleteDisclosure.onOpen}>
           Delete
         </Button>
+        <AlertDialog
+        isOpen={deleteDisclosure.isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={deleteDisclosure.onClose}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize='lg' fontWeight='bold' >
+              Delete Customer
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              Are you sure? You can't undo this action afterwards.
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={deleteDisclosure.onClose}>
+                Cancel
+              </Button>
+              <Button colorScheme='red' onClick={deleteHandler} ml={3}>
+                Delete
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
       </ButtonGroup>
     </CardFooter>
   </Card>

@@ -9,6 +9,7 @@ const plansRouter = require('./routes/plans');
 const locationRouter = require('./routes/locations');
 const planningIdRouter = require('./routes/planningId');
 const generateSchedule = require('./routes/generateSchedule');
+const locationDelete = require('./routes/locationdelete');
 
 const db = require("./db");
 const trendLocations = require('./routes/trendLocations');
@@ -20,7 +21,7 @@ const cors = require('cors')
 const addPlanning = require('./helpers/addPlanning')(db);
 const planningId = require('./helpers/planningId')(db);
 const reschedule = require('./helpers/reschedule')(db);
-
+const removeLocation = require('./helpers/locationdelete')(db);
 const userPlans = require('./routes/userPlans');
 
 const bodyParser = require("body-parser");
@@ -60,5 +61,5 @@ app.use('/addlocation', plansRouter(addLocation));
 app.use('/planningid', planningIdRouter(planningId));
 app.use('/generateschedule', generateSchedule());
 app.use('/reschedule', locationRouter(reschedule))
-
+app.use('/locationdelete', locationDelete(removeLocation))
 module.exports = app;
