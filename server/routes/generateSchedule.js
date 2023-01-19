@@ -7,7 +7,7 @@ module.exports = () => {
 
 
   const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: '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',
   });
   const openai = new OpenAIApi(configuration);
 

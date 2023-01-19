@@ -6,8 +6,9 @@ module.exports = db => {
     db.query(
       `
       SELECT *
-      FROM plans
-      WHERE user_id = ${request.params.id};
+      FROM attractions
+      WHERE user_id = ${request.params.id}
+      ORDER BY plan_date;
     `
     ).then((data) => {
       response.json(data.rows);

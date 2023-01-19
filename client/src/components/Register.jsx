@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import bcrypt from 'bcryptjs';
+import { useToast } from '@chakra-ui/react';
 
 export default function Register() {
   
@@ -41,6 +42,8 @@ export default function Register() {
     setPasswordConfirmation(event.target.value);
     setError(false);
   }
+
+  const toast = useToast()
   
   const handleSubmit = (event) => {
   event.preventDefault();
@@ -58,8 +61,15 @@ export default function Register() {
         password: bcrypt.hashSync(password, 12)
       })
       .then((result) => {
+        toast({
+          title: 'Account created.',
+          description: "We've created your account for you.",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
         const user = result.data;
-        console.log(user);
+        console.log("USER",user);
         localStorage.setItem("user", JSON.stringify(user));
         navigate('/');
       })

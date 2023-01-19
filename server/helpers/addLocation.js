@@ -1,20 +1,15 @@
 module.exports = (db) => {
-  const addLocation = (name, start_date, end_date, user_id, location_id, locationName, cityName, rate, average_budget) => {
-    const planQuery = {
-      text: `INSERT INTO plans (name, start_date, end_date, user_id, location_id) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-      values: [name, start_date, end_date, user_id, location_id],
+  const addLocation = (user_id, locationName, cityName, rate, photo_url, plan_date) => {
+    const attractionQuery = {
+      text: `INSERT INTO attractions (user_id, name, city, rate, photo_url, plan_date) 
+            VALUES ($1, $2, $3, $4, $5, $6) 
+            RETURNING *`,
+      values: [user_id, locationName, cityName, rate, photo_url, plan_date],
     };
     return db
-      .query(planQuery)
-      .then((result) => {
-        const attractionQuery = {
-          text: `INSERT INTO attractions (name, city, rate, average_budget) VALUES ($1, $2, $3, $4) RETURNING *`,
-          values: [locationName, cityName, rate, average_budget],
-        };
-        return db.query(attractionQuery);
-      })
-      .then((result) => result.rows[0])
-      .catch((err) => err);
+      .query(attractionQuery) 
+      .then((result) => console.log(result.rows[0]))
+      .catch((err) => console.log(err));
   };
   return { addLocation };
 }

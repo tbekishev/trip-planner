@@ -22,9 +22,10 @@ export default function PlanningList() {
   <PlanningListItem 
   key={location.id}
   name={location.name}
-  start_date={location.start_date}
-  end_date={location.end_date}
-  locatinId={location.location_id} />);
+  city={location.city}
+  rate={location.rate}
+  photo_url={location.photo_url}
+  plan_date={location.plan_date} />);
 
     return (
       <ul>
