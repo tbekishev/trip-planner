@@ -10,20 +10,26 @@ export default function UserProfile() {
 
 
 return (
-  <main>
+  <main className='user-profile'>
     <section className='header'>
       <Header />
     </section>
+
+    <section className='profile-header'>
     <section className='user_profile_title' style={{ 'marginTop': '100px' }}><h2> {obj.first_name}'s Profile</h2>
     </section >
     <section className='user_profile_container'>
-    <button  className='user_profile_button'> <a href="/places">Start Your New Journey :)</a></button>
+    <button  className='user_profile_button'> <a href="/places">Start Your New Journey</a></button>
     </section>
+    </section>
+
     <section className='user_profile' style={{ 'marginTop': '10px'}}>My Plans</section>
       <br /><br />
-      <div className='planning-list--container'>
-        {localStorage.getItem("user") && <PlanningList />}     
-      </div>
+
+        <div className='user_profile_list'>
+          {localStorage.getItem("user") && <PlanningList />}     
+        </div>
+
     
   </main>
 );
