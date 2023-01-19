@@ -1,40 +1,40 @@
+import { StarIcon } from '@chakra-ui/icons';
 import {
   Card,
   CardBody,
-  CardFooter,
   Stack,
   Heading,
   Text,
+  Image,
 } from '@chakra-ui/react'
+import noImage from '../../img/no_image.jpg';
 
-export default function AttractionListItem() {
+export default function AttractionListItem(props) {
 
   return (      
-    <Card
-      direction={{ base: 'column', sm: 'row' }}
-      overflow='hidden'
-      variant='outline'
-      className='planning-item'ß
-    >
-      <img
-        src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-        alt='Caffe Latte'
+    <Card maxW='sm'>
+    <CardBody>
+    <Heading size='md'>{props.name}</Heading>
+      <Image
+        src={props.photo_url === 'noImage' ? noImage : props.photo_url}
+        alt={props.name}
+        borderRadius='lg'
       />
-
-      <Stack>
-        <CardBody>
-          <Heading size='md'>Attraction Title</Heading>
-
-          <Text className='planning-item--discription' py='2'>
-            Caffè latte is a coffee beverage of Italian origin made with espresso
-            and steamed milk.
-          </Text>
-        </CardBody>
-        
-        <CardFooter className='planning-item--footer'>
-          Average spent $2000 | Average time 2 ~ 3 hrs
-        </CardFooter>
+      <Stack mt='6' spacing='3'>
+        <Text>{props.city}</Text>
+        <Text color='blue.600' fontSize='2xl'>
+        {Array(5)
+                        .fill('')
+                        .map((_, i) => (
+                          <StarIcon
+                            key={i}
+                            color={i < Number(props.rate) ? 'gold' : 'gray.300'}
+                            icon='star'
+                          />
+                        ))}
+        </Text>
       </Stack>
-    </Card>
+    </CardBody>
+  </Card>
   );
 }

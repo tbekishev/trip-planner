@@ -1,13 +1,13 @@
 const router = require("express").Router();
 
 module.exports = db => {
-  router.get("/trend-attrctions", (request, response) => {
+  router.get("/trend-attarctions", (request, response) => {
     db.query(
       `
       SELECT *
       FROM attractions
       ORDER BY rate desc
-      LIMIT 5;
+      LIMIT 3;
     `
     ).then((data) => {
       response.json(data.rows);

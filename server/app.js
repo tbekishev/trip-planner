@@ -54,7 +54,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter(userRegistration));
 app.use('/userslogin', loginRouter(db));
 app.use('/profile', profileRouter(db));
-app.use('/trend-attrctions', profileRouter(db));
+app.use('/trend-attarctions', profileRouter(db));
 app.use('/api', userPlans(db));
 app.use('/addlocation', plansRouter(addLocation));
 //app.use('/addplanning', plansRouter(addPlanning));

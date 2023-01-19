@@ -1,16 +1,33 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import './AttractionListItem';
 import AttractionListItem from './AttractionListItem';
 
 export default function AttractionList() {
 
-  return (
-    <div>
+  const [state, setState] = useState([]);
 
-      <AttractionListItem />
-      <AttractionListItem />
-      <AttractionListItem />
-      <AttractionListItem />
-      <AttractionListItem />
+  useEffect(() => {
+    const url = `/api/trend-attarctions`;
+    axios
+    .get(url)
+    .then((response) =>{
+      setState(response.data);
+    })
+  }, []);
+
+  
+
+  return (
+    <div>{state.map(location => (
+      <AttractionListItem 
+        key={location.id}
+        name={location.name}
+        city={location.city}
+        rate={location.rate}
+        photo_url={location.photo_url}
+      />
+  ))}
     </div>
 
   );

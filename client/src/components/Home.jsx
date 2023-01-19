@@ -1,7 +1,7 @@
 import Header from "./Header";
-import PlanningList from "./PlanningList";
 import './Home.scss';
 import { useNavigate, useLocation } from "react-router-dom";
+import AttractionList from "./Generate/AttractionList";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export default function Home() {
         <span className='planning-list--title'>Popular locations</span>
 
         <div className='planning-list--container'>
-                  
+          <AttractionList/>
         </div>
       </section>
 

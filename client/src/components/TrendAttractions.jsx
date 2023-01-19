@@ -14,7 +14,7 @@ export default function TrendAttractions() {
 
   useEffect(() => {
     axios
-      .get('/trend-attrctionse')
+      .get('/trend-attarctions')
       .then((response) => {
         setState(response.data.data)
         console.log(response, "data")
