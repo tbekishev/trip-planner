@@ -1,7 +1,23 @@
 @import '../../styles/variables.scss';
 
 .place-card {
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
+  margin: 0.5em;
+  position: relative;
+
+  border-width: 1px;
+  border-radius: 0.75em;
+  overflow: hidden;
+  width: 350px;
+  height: 430px;
+
+  img {
+    height: 40%;
+    width: 100%;
+    object-fit: cover;
+  }
 
   &--selected {
     opacity: 30%;
@@ -10,4 +26,12 @@
   &:hover {
     box-shadow: 1px 1px 10px #999;
   }
+}
+
+.add-button {
+  position: absolute;
+  bottom: 10px;
+  align-self: center;
+  color:$yellow;
+  font-size: 2.5em;
 }

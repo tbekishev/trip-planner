@@ -6,6 +6,8 @@ import classNames from "classnames";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { RangeDatepicker, SingleDatepicker } from 'chakra-dayzed-datepicker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import './ListItems.scss';
 
@@ -78,40 +80,33 @@ export default function ListItems(props) {
 
   return (
     <Box 
-      borderWidth='1px' 
-      borderRadius='lg' 
-      overflow='hidden'
-      width='350px'
-      height='430px'
       className={placeCardClass}
+      onClick={onOpen} 
       >
       <Image 
-        style={{ height: 150, width: '100%', objectFit: 'scale-down' }}
         src={props.place.photo ? props.place.photo.images.small.url : noImage}
         alt={props.place.name} />
 
       <Box p='6'>
         <Box
-          mt='1'
-          fontWeight='semibold'
-          as='h4'
-          lineHeight='tight'
-          noOfLines={1}
+          marginTop='-0.5em'
         >
           {props.place.name}
         </Box>
 
-        <Box display='flex' mt='2' alignItems='center'>
-          {Array(5)
-            .fill('')
-            .map((_, i) => (
-              <StarIcon
-                key={i}
-                color={i < Number(props.place.rating) ? 'gold' : 'gray.300'}
-                icon='star'
-              />
-            ))}
-          <Box as='span' ml='40' color='gray.600' fontSize='sm'>
+        <Box display='flex' alignItems='center' justifyContent='space-between' marginBottom='1em'>
+          <div>
+            {Array(5)
+              .fill('')
+              .map((_, i) => (
+                <StarIcon
+                  key={i}
+                  color={i < Number(props.place.rating) ? 'gold' : 'gray.300'}
+                  icon='star'
+                />
+              ))}
+          </div>
+          <Box as='span' color='gray.600' fontSize='12px'>
             {props.place.num_reviews} reviews
           </Box>
         </Box>
@@ -123,10 +118,9 @@ export default function ListItems(props) {
         </Box>
         </Box> }
         <Box >
-          Ranking
-        <Box as='span' ml='5'>
-          {props.place.ranking}
-        </Box>
+          <Box fontSize='12px' marginTop='0.5em'>
+            {props.place.ranking}
+          </Box>
         </Box>
         {props.place?.awards?.map((award) => (
           <Box d="flex" justifyContent="space-between" my={1} alignItems="center">
@@ -140,27 +134,25 @@ export default function ListItems(props) {
         ))}
         </Box>
         {props.place.address && (
-          <Text as="p" mb={2} color="gray.600">
-            <EmailIcon name="location" mr={2} /> {props.place.address}
+          <Text fontSize='14px' color="gray.600" marginTop='1em'>
+            <FontAwesomeIcon icon={faLocationDot} /> {props.place.address}
           </Text>
         )}
         {props.place.phone && (
-          <Text as="p" color="gray.600">
-            <PhoneIcon mr={2} /> {props.place.phone}
+          <Text fontSize='14px' color="gray.600" marginTop='0.5em'>
+            <PhoneIcon mr={1} /> {props.place.phone}
           </Text>
         )}
       
       </Box>      
-      <Button variant='solid' colorScheme='yellow' onClick={onOpen} >
-        Add to my plan
-      </Button>
+      <FontAwesomeIcon icon={faPlus} className='add-button'/>
       {localStorage.getItem("user") ? (
         <Modal
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
-        isOpen={isOpen}
-        onClose={onClose}
-      >
+          initialFocusRef={initialRef}
+          finalFocusRef={finalRef}
+          isOpen={isOpen}
+          onClose={onClose}
+        >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Add this location to your plan</ModalHeader>
@@ -216,7 +208,7 @@ export default function ListItems(props) {
             </ModalFooter>
               <Link color='teal.500' to='/register'>Don't have an account? Register here</Link>
           </ModalContent>
-        </Modal>)};
+        </Modal>)}
     </Box>
   );
 }

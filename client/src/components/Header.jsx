@@ -6,6 +6,7 @@ import { Avatar } from '@chakra-ui/react'
 import { openNav, closeNav } from '../helpers/dropDownHelper';
 
 
+
 export default function Header(props) {
 
   const { pathname } = useLocation();

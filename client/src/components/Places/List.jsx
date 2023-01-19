@@ -38,14 +38,13 @@ export default function List(props) {
         </section>
       {props.isLoading ? (
         <Box width="100%" height="100%" justifyContent="center" alignItems="center" display="flex">
-          <CircularProgress isIndeterminate color="orange" size="5rem" />
+          <CircularProgress isIndeterminate color="orange" size="5rem" marginTop='150px'/>
         </Box>
       ) : (
 
-
-        <Box display="flex" flexWrap="wrap" style={{height: '100%', overflow: 'auto'}}>
+        <Box display="flex" flexWrap="wrap" style={{height: '100%', overflow: 'auto'}} className='attraction-box'>
            {props.places?.map((place, i) => (
-            <Box key={i} p={2}>
+            <Box>
               <ListItems place={place} value={props.value} setAttractions={props.onChange}/>
             </Box>
           ))}

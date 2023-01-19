@@ -1,19 +1,24 @@
+@import '../../styles/mixins.scss';
+
 .top-container {
   justify-content: center;
   display: flex;
   flex-direction: column;
 
   .filter {
+    @include default-padding;
     margin-top: 120px;
     display: flex;
-    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
 
     &-item {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      flex-direction: column;
+      justify-content: center;
       margin-bottom: 10px;
-      padding
 
       select {
         margin-left: 1em;
@@ -21,4 +26,9 @@
       }
     }
   }
+}
+
+.attraction-box {
+  padding-left: 360px;
+  padding-right: 360px;
 }

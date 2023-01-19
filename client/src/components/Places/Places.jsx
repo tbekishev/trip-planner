@@ -172,8 +172,7 @@ export default function Places(props) {
               className='place-search--bar'
               ref={textInput}
             />
-            <FontAwesomeIcon icon={faArrowRight} className='place-search--button' onClick={onOpen}/>
-
+            
               {coords && 
                 <FontAwesomeIcon 
                     icon={faEarthAmericas} 
