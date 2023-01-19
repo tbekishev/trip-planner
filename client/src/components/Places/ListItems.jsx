@@ -110,13 +110,13 @@ export default function ListItems(props) {
             {props.place.num_reviews} reviews
           </Box>
         </Box>
-        {props.place.price_level &&
+        {/* {props.place.price_level &&
         <Box >
           Price
-        <Box as='span' ml='60'>
+        <Box as='span' ml='40'>
           {props.place.price_level}
         </Box>
-        </Box> }
+        </Box> } */}
         <Box >
           <Box fontSize='12px' marginTop='0.5em'>
             {props.place.ranking}
@@ -145,7 +145,7 @@ export default function ListItems(props) {
         )}
       
       </Box>      
-      <FontAwesomeIcon icon={faPlus} className='add-button'/>
+      {/* <FontAwesomeIcon icon={faPlus} className='add-button'/> */}
       {localStorage.getItem("user") ? (
         <Modal
           initialFocusRef={initialRef}
