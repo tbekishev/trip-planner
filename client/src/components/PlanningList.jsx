@@ -7,6 +7,7 @@ export default function PlanningList() {
 
   const obj = JSON.parse(localStorage.getItem("user"));
   const [state, setState] = useState([]);
+  const [edited, setEdited] = useState(true)
 
   useEffect(() => {
     const url = `/api/plans/${obj.id}`;
@@ -14,8 +15,9 @@ export default function PlanningList() {
     .get(url)
     .then((response) =>{
       setState(response.data);
+      setEdited(false);
     })
-  }, []);
+  }, [edited]);
 
   const groupedLocations = state.reduce((acc, location) => {
     if (!acc[location.plan_date]) {
@@ -40,6 +42,7 @@ const dateList = locationGroups.map(([date, locations]) => (
                   rate={location.rate}
                   photo_url={location.photo_url}
                   plan_date={location.plan_date}
+                  setEdited={setEdited}
                 />
             ))}
         </ul>

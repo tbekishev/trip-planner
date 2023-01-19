@@ -53,7 +53,7 @@ export default function PlanningListItem(props) {
       })
       .then((result) => {
         deleteDisclosure.onClose();
-        navigate('/profile');
+        props.setEdited(true);
         toast({
           title: 'Location is deleted!',
           description: "We've deleted your location for you.",
@@ -81,7 +81,7 @@ export default function PlanningListItem(props) {
       })
       .then((result) => {
         rescheduleDisclosure.onClose();
-        navigate('/profile');
+        props.setEdited(true);
         toast({
           title: 'Reschedule is done',
           description: "We've rescheduled your plan for you.",

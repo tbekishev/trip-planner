@@ -37,7 +37,7 @@ export default function List(props) {
 
         </section>
       {props.isLoading ? (
-        <Box width="100%" height="100%" justifyContent="center" alignItems="center" d="flex">
+        <Box width="100%" height="100%" justifyContent="center" alignItems="center" display="flex">
           <CircularProgress isIndeterminate color="orange" size="5rem" />
         </Box>
       ) : (
