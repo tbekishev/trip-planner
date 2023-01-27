@@ -1,15 +1,13 @@
 import './Header.scss';
-import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Avatar } from '@chakra-ui/react'
 import { openNav, closeNav } from '../helpers/dropDownHelper';
 
 
 
-export default function Header(props) {
+export default function Header() {
 
-  const { pathname } = useLocation();
   const logout = () => localStorage.clear();
   const obj = JSON.parse(localStorage.getItem("user"));
   
@@ -25,7 +23,7 @@ export default function Header(props) {
             <a href="/">Home</a>
             <a href="/places">Start Planning</a>
             <a href="/profile">My Page</a>
-            <a href="/register">Account</a>
+            <a href="/register">Register</a>
             <a href="/" onClick={logout}>Log Out</a>
           </div>
         </div>

@@ -1,13 +1,13 @@
-import { useToast, Alert, AlertIcon, Card, CardBody, Heading, Stack, Image, Divider, CardFooter, ButtonGroup, Button, Box, Badge, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, InputLeftElement, InputGroup, Tag } from '@chakra-ui/react';
-import { EmailIcon, PhoneIcon, StarIcon } from '@chakra-ui/icons';
-import React, { useEffect, useState } from 'react';
+import { useToast, Image, Button, Box, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, Tag } from '@chakra-ui/react';
+import { PhoneIcon, StarIcon } from '@chakra-ui/icons';
+import React, { useState } from 'react';
 import noImage from '../../img/no_image.jpg'
 import classNames from "classnames";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { RangeDatepicker, SingleDatepicker } from 'chakra-dayzed-datepicker';
+import { SingleDatepicker } from 'chakra-dayzed-datepicker';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 import './ListItems.scss';
 
@@ -33,16 +33,6 @@ export default function ListItems(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const obj = JSON.parse(localStorage.getItem("user"));
   const toast = useToast();
-  const [amount, setAmount] = useState('');
-  const [planName, setPlanName] = useState('');
-
-  const handleAmountChange = (event) => {
-    setAmount(event.target.value);
-  }
-
-  const handlePlanNameChange = (event) => {
-    setPlanName(event.target.value);
-  }
 
   const clickHandler = (event) => {
     console.log("USER: ", obj.id);
@@ -123,7 +113,7 @@ export default function ListItems(props) {
           </Box>
         </Box>
         {props.place?.awards?.map((award) => (
-          <Box d="flex" justifyContent="space-between" my={1} alignItems="center">
+          <Box display="flex" justifyContent="space-between" my={1} alignItems="center">
           <img src={award.images.small} alt={props.place.name} />
           <Text variant="subtitle2" color="gray.600">{award.display_name}</Text>
           </Box>
