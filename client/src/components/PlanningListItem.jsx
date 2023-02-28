@@ -1,5 +1,5 @@
 import './PlanningListItem.scss';
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import axios from 'axios';
 import noImage from '../img/no_image.jpg';
 import { SingleDatepicker } from 'chakra-dayzed-datepicker';
@@ -43,7 +43,6 @@ export default function PlanningListItem(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const toast = useToast();
   const cancelRef = useRef();
-  const navigate = useNavigate();
 
   const deleteHandler =(event) => {
     event.preventDefault();

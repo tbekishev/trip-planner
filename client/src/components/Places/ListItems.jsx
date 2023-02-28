@@ -1,9 +1,9 @@
 import { useToast, Image, Button, Box, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, useDisclosure, Text, Tag } from '@chakra-ui/react';
 import { PhoneIcon, StarIcon } from '@chakra-ui/icons';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import noImage from '../../img/no_image.jpg'
 import classNames from "classnames";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { SingleDatepicker } from 'chakra-dayzed-datepicker';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -67,6 +67,46 @@ export default function ListItems(props) {
       })
     
   }
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [error, setError] = useState(false);
+  const [alert, setAlert] = useState(false);
+  const navigate = useNavigate();
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    setAlert(false);
+    setError(false);
+  }
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    setAlert(false);
+    setError(false);
+  }
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!email || !password){
+      setError(true);
+    } else {
+    axios
+      .post("/userslogin", {
+        email,
+        password
+      })
+      .then((result) => {
+        if (!result.data) {
+          setAlert(true);
+        } else {
+        const user = result.data;
+        localStorage.setItem("user", JSON.stringify(user));
+        navigate('/places');
+        }
+      })
+    }
+  };
 
   return (
     <Box 
@@ -175,29 +215,41 @@ export default function ListItems(props) {
           onClose={onClose}
         >
           <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Log in to your account</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody pb={6}>
-              <FormControl>
-                <FormLabel>Email</FormLabel>
-                <Input ref={initialRef} placeholder='First name' />
-              </FormControl>
-  
-              <FormControl mt={4}>
-                <FormLabel>Password</FormLabel>
-                <Input placeholder='Last name' />
-              </FormControl>
-            </ModalBody>
-  
-            <ModalFooter>
-              <Button colorScheme='blue' mr={3}>
-                Login
-              </Button>
-              <Button onClick={onClose}>Cancel</Button>
-            </ModalFooter>
-              <Link color='teal.500' to='/register'>Don't have an account? Register here</Link>
-          </ModalContent>
+          <form onSubmit={handleSubmit}>
+            <ModalContent>
+              <ModalHeader>Log in to your account</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody pb={6}>
+                  <FormControl>
+                    <FormLabel>Email</FormLabel>
+                    <Input 
+                      ref={initialRef} 
+                      placeholder='First name' 
+                      onChange={handleEmailChange}
+                    />
+                  </FormControl>
+      
+                  <FormControl mt={4}>
+                    <FormLabel>Password</FormLabel>
+                    <Input 
+                      placeholder='Password' 
+                      type="password" 
+                      onChange={handlePasswordChange}
+                    />
+                  </FormControl>
+              </ModalBody>
+    
+              <ModalFooter>
+                <Button colorScheme='blue' mr={3} onClick={handleSubmit}>
+                  Login
+                </Button>
+                <Button type="submit" onClick={onClose}>Cancel</Button>
+              </ModalFooter>
+              <span>{alert ? `Wrong Credentials, Try Again!` : null}</span>
+              <span>{error ? `Fill up the Form please!` : null}</span>
+                <Link color='teal.500' to='/register'>Don't have an account? Register here</Link>
+              </ModalContent>
+          </form>
         </Modal>)}
     </Box>
   );

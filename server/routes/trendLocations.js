@@ -11,7 +11,7 @@ module.exports = db => {
     `
     ).then((data) => {
       response.json(data.rows);
-      console.log (data, "data")
+      // console.log (data, "data")
     });
   });
 

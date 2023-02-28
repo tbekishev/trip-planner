@@ -12,7 +12,7 @@ module.exports = () => {
   const openai = new OpenAIApi(configuration);
 
   router.get("/", async (req, res) => {
-    console.log(req.query);
+    // console.log(req.query);
 
     const completion = await openai.createCompletion({
       model: "text-davinci-003",

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Avatar } from '@chakra-ui/react'
 import { openNav, closeNav } from '../helpers/dropDownHelper';
+import { Link } from 'react-router-dom';
 
 
 
@@ -20,15 +21,17 @@ export default function Header() {
           </div>
 
           <div className="overlay-content">
-            <a href="/">Home</a>
-            <a href="/places">Start Planning</a>
-            <a href="/profile">My Page</a>
-            <a href="/register">Register</a>
-            <a href="/" onClick={logout}>Log Out</a>
-          </div>
+          <Link to="/">Home</Link>
+          <Link to="/places">Start Planning</Link>
+          <Link to="/profile">My Page</Link>
+          <Link to="/register">Register</Link>
+          <Link to="/" onClick={logout}>
+            Log Out
+          </Link>
+        </div>
         </div>
 
-        <a href='/' className='nav-logo'>Triplogo</a>
+        <Link to="/" className='nav-logo'>Triplogo</Link>
 
         <div className='search-bar'>
 

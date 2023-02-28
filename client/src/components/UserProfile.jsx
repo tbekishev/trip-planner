@@ -2,6 +2,7 @@ import './UserProfile.scss';
 import './PlanningListItem.scss';
 import Header from './Header';
 import PlanningList from './PlanningList';
+import { Link } from 'react-router-dom';
 
 
 export default function UserProfile() {
@@ -19,7 +20,7 @@ return (
     <section className='user_profile_title' style={{ 'marginTop': '100px' }}><h2> {obj.first_name}'s Profile</h2>
     </section >
     <section className='user_profile_container'>
-    <button  className='user_profile_button'> <a href="/places">Start Your New Journey</a></button>
+    <button  className='user_profile_button'> <Link to="/places">Start Your New Journey</Link></button>
     </section>
     </section>
 
